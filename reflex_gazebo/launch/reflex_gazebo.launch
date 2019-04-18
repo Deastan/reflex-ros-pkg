@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- ===================================================================================== -->
+    <!-- |   Try to spanw Righthand  | -->
+    <!-- ===================================================================================== -->
+
+
+
+    <!-- Loads the Gazebo world. -->
+    <include file="$(find reflex_gazebo)/launch/iiwa_world.launch">
+
+        <arg name="robot_name" value="$(arg robot_name)" />
+        <arg name="model" value="$(arg model)" />
+    </include>
+
+
+
+
+</launch>
