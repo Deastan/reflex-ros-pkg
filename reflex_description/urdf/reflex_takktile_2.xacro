@@ -133,7 +133,9 @@
     <axis
       xyz="0 0 0" />
   </joint>
-  
+
+  <!-- *****************************************FINGER 1**************************************************** -->
+
   <link name="swivel_1">
     <inertial>
       <!-- TODO: CALCULATES CENTER OF MASS -->
@@ -406,6 +408,17 @@
   <!-- *****************************************FINGER 2**************************************************** -->
 
   <link name="swivel_2">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001" ixy="0.0" ixz="0.0"
+                         iyy="0.0001"  iyz="0.0"
+                                           izz="0.0001"/>
+    </inertial>
+
     <visual>
       <origin
         xyz="0 0 0"
@@ -419,6 +432,13 @@
         <xacro:swivel_color/>
       </material>
     </visual>
+
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/swivel_2.STL" />
+      </geometry>
+    </collision>
   </link>
   
   <joint name="preshape_2" type="continuous">
@@ -434,10 +454,19 @@
   </joint>
   
   <link name="proximal_2">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001" ixy="0.0" ixz="0.0"
+                         iyy="0.0001"  iyz="0.0"
+                                           izz="0.0001"/>
+    </inertial>
+
     <visual>
-      <origin
-        xyz="-0.011 0.007 0.011"
-        rpy="3.1459 0 0"/>
+      <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
       <geometry>
         <mesh
           filename="package://reflex_description/meshes/proximal_1.STL" />
@@ -447,6 +476,13 @@
         <xacro:proximal_color/>
       </material>
     </visual>
+
+    <collision>
+      <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/proximal_1.STL" />
+      </geometry>
+    </collision>
   </link>
 
   <joint name="proximal_joint_2" type="continuous">
@@ -462,10 +498,19 @@
   </joint>
 
   <link name="proximal_pad_2">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001" ixy="0.0" ixz="0.0"
+                         iyy="0.0001"  iyz="0.0"
+                                           izz="0.0001"/>
+    </inertial>
+
     <visual>
-      <origin
-        xyz="-0.008 0.014 -0.002"
-        rpy="1.5708 1.5708 0" />
+      <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
         <mesh
           filename="package://reflex_description/meshes/proximal_pad_1.STL" />
@@ -475,6 +520,13 @@
         <xacro:pad_color/>
       </material>
     </visual>
+
+    <collision>
+      <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+      </geometry>
+    </collision>
   </link>
 
   <joint name="prox2_pad_joint" type="fixed">
