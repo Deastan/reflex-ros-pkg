@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Incudes -->
+  <xacro:include filename="$(find reflex_description)/urdf/reflex_takktile_2.xacro" />
+  <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" />
+
+  <!-- Transmissions -->
+  <!-- <xacro:if value="$(arg actuate_reflex)">
+    <xacro:include filename="$(find ll4ma_robots_description)/urdf/reflex/reflex.transmission.xacro"/>
+  </xacro:if> -->
+
+<!-- Load Gazebo lib and set the robot namespace -->
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/reflex_takktile_2</robotNamespace>
+      </plugin>
+    </gazebo>
+
+    <!-- <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>rhr_flex_model</robotNamespace>
+        <robotParam>/robot_description</robotParam>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo> -->
+
+  
+  
+</robot>

@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <!-- Incudes -->
+  <!-- <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" /> -->
+  <!-- <xacro:include filename="$(find reflex_description)/urdf/reflex.gazebo.xacro" /> -->
+  <xacro:include filename="$(find reflex_description)/urdf/reflex_takktile_2.xacro" />
+
   <!-- materials -->
   <gazebo reference="base_link">
     <material>Gazebo/Black</material>
