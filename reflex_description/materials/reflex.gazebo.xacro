@@ -1,12 +1,37 @@
 <?xml version="1.0"?>
+
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Incudes -->
+  <xacro:include filename="$(find reflex_description)/urdf/reflex_takktile_2.xacro" />
+  <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" />
+
+  <!-- Transmissions -->
+  <!-- <xacro:if value="$(arg actuate_reflex)">
+    <xacro:include filename="$(find ll4ma_robots_description)/urdf/reflex/reflex.transmission.xacro"/>
+  </xacro:if> -->
+
+<!-- Load Gazebo lib and set the robot namespace -->
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/reflex_takktile_2</robotNamespace>
+      </plugin>
+    </gazebo>
+
+    <!-- <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>rhr_flex_model</robotNamespace>
+        <robotParam>/robot_description</robotParam>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo> -->
 
   <!-- materials -->
   <gazebo reference="base_link">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Green</material>
   </gazebo>
   <gazebo reference="pad">
-    <material>Gazebo/Green</material>
+    <material>Gazebo/FlatBlack</material>
   </gazebo>
   <gazebo reference="swivel_1">
     <material>Gazebo/Black</material>
@@ -53,13 +78,13 @@
   <gazebo reference="proximal_pad_3">
     <material>Gazebo/FlatBlack</material>
   </gazebo>
-  <gazebo reference="flex_link_1">
+  <gazebo reference="finger_1_flex_link">
     <material>Gazebo/YellowTransparent</material>
   </gazebo>
-  <gazebo reference="flex_link_2">
+  <gazebo reference="finger_2_flex_link">
     <material>Gazebo/YellowTransparent</material>
   </gazebo>
-  <gazebo reference="flex_link_3">
+  <gazebo reference="finger_3_flex_link">
     <material>Gazebo/YellowTransparent</material>
   </gazebo>
   

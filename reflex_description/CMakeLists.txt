@@ -18,9 +18,9 @@ include_directories(
 )
 
 ## Declare a cpp executable
-add_executable(hand_visualizer2 src/hand_visualizer.cpp)
+#add_executable(hand_visualizer2 src/hand_visualizer.cpp)
 #add_executable(reflex imu.py)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(hand_visualizer2 ${catkin_LIBRARIES})
-add_dependencies(hand_visualizer2 reflex_msgs2_gencpp)
+#target_link_libraries(hand_visualizer2 ${catkin_LIBRARIES})
+#add_dependencies(hand_visualizer2 reflex_msgs2_gencpp)

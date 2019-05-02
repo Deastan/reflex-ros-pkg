@@ -3,7 +3,10 @@
    01.05.2019 -->
 
 <robot name="reflex_takktile_2" xmlns:xacro="http://ros.org/wiki/xacro">
-
+<!-- Incudes -->
+  <!-- <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" /> -->
+  <!-- <xacro:include filename="$(find reflex_description)/materials/reflex.gazebo.xacro" /> -->
+  <xacro:include filename="$(find reflex_description)/materials/reflex.materials.xacro" />
 <!-- Properties -->
   <xacro:property name="flex_link_mass"     value="0.01"/>
   <xacro:property name="proximal_link_mass" value="0.01"/>
@@ -23,7 +26,7 @@
   <xacro:property name="prox_length" value="0.060" />
   <xacro:property name="pi" value="3.1415" />
 
-  <xacro:macro name="base_color">
+  <!-- <xacro:macro name="base_color">
     <color rgba="0.1 0.1 0.1 1"/>
   </xacro:macro>
 
@@ -49,7 +52,7 @@
 
   <material name="orange">
     <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
-  </material>
+  </material> -->
 
 <!-- ################ ################ ################ ################ ################ ################ -->
 <!-- ################ THE SECTION CREATED BY SOLIDWORKS EXPORTER, CUT AND PASTE THIS IN HERE ################ -->
