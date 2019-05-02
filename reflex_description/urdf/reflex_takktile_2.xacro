@@ -4,10 +4,10 @@
 
 <robot name="reflex_takktile_2" xmlns:xacro="http://ros.org/wiki/xacro">
 <!-- Incudes -->
-  <!-- <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" /> -->
-  <!-- <xacro:include filename="$(find reflex_description)/urdf/reflex.gazebo.xacro" /> -->
+  <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" />
+  <xacro:include filename="$(find reflex_description)/urdf/reflex.gazebo.xacro" />
   <xacro:include filename="$(find reflex_description)/materials/reflex.materials.xacro" />
-  
+
 <!-- Properties -->
   <xacro:property name="flex_link_mass"     value="0.01"/>
   <xacro:property name="proximal_link_mass" value="0.01"/>

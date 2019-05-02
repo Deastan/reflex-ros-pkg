@@ -52,6 +52,12 @@
   <run_depend>tf</run_depend>
   <run_depend>control_msgs</run_depend>
   <run_depend>message_runtime</run_depend>
+  <run_depend>controller_manager</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+
+  <run_depend>rqt_gui</run_depend>
+<run_depend>effort_controllers</run_depend>
   <!-- <run_depend>iiwa_msgs</run_depend> -->
   <run_depend>gazebo_ros</run_depend>
   <!-- <run_depend>tensorflow</run_depend> -->
@@ -59,7 +65,6 @@
   <!-- <run_depend>python-tensorflow-pip</run_depend> -->
   <!-- <run_depend>tensorflow</run_depend> -->
 
-  <run_depend>controller_manager</run_depend>
 
   <!-- Doesn't use anymore!!! <exec_depend>python-tensorflow-pip</exec_depend> -->
 
