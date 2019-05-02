@@ -7,8 +7,8 @@
   </xacro:if> -->
 
   <!-- materials -->
-  <gazebo reference="lower_shell">
-    <material>Gazebo/Black</material>
+  <gazebo reference="base_link">
+    <material>Gazebo/Green</material>
   </gazebo>
   <gazebo reference="pad">
     <material>Gazebo/FlatBlack</material>

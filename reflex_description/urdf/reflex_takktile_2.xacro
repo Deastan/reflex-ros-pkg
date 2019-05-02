@@ -3,7 +3,6 @@
    01.05.2019 -->
 
 <robot name="reflex_takktile_2" xmlns:xacro="http://ros.org/wiki/xacro">
- <!-- <robot name="robot_test" xmlns:xacro="http://ros.org/wiki/xacro"> -->
 
 <!-- Properties -->
   <xacro:property name="flex_link_mass"     value="0.01"/>
@@ -48,6 +47,10 @@
     <color rgba="0.2 0.8 0.75 1"/>
   </xacro:macro>  
 
+  <material name="orange">
+    <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+  </material>
+
 <!-- ################ ################ ################ ################ ################ ################ -->
 <!-- ################ THE SECTION CREATED BY SOLIDWORKS EXPORTER, CUT AND PASTE THIS IN HERE ################ -->
 <!-- ################ YOU CAN ALTER THE COLORS FROM HERE ################ -->
@@ -58,7 +61,7 @@
       <!-- TODO: CALCULATES CENTER OF MASS -->
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
-      <mass value="0.7"/>
+      <mass value="${base_link_mass}"/>
       <inertia
         ixx="0.0001" ixy="0.0" ixz="0.0"
                          iyy="0.0001"  iyz="0.0"
@@ -318,6 +321,7 @@
     </inertial>
 
     <visual>
+      <!-- <origin xyz="-0.077 0.007 0.007" rpy="3.1459 0 0" /> -->
       <origin xyz="-0.077 0.007 0.007" rpy="3.1459 0 0" />
       <!-- <origin xyz="0.0 0.0 0.0" rpy="3.1459 0 0" /> -->
       <geometry>
@@ -332,7 +336,6 @@
 
     <collision>
       <origin xyz="-0.077 0.007 0.007" rpy="3.1459 0 0" />
-      <!-- <origin xyz="0.0 0.0 0.0" rpy="3.1459 0 0" /> -->
       <geometry>
         <mesh filename="package://reflex_description/meshes/distal_1.STL" />
       </geometry>
@@ -354,7 +357,7 @@
     <!-- <origin xyz="${flex_length} 0 0.00250000000000002" rpy="0 0 0" /> -->
     <!-- <origin xyz="${flex_length-0.01} 0 0.008" rpy="0 0 0" /> -->
     <!-- <origin xyz="${flex_length-0.01} 0 0.000" rpy="0 0 0" /> -->
-    <origin xyz="0.0 0 0.0" rpy="0 0 0" />
+    <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent link="flex_link_1" />
     <child link="distal_1" />
     <axis xyz="0 -1 0" />
@@ -363,9 +366,9 @@
   
   <link name="distal_pad_1">
     <inertial>
-      <!-- TODO: CALCULATES CENTER OF MASS -->
+   
       <origin xyz="0.0 0.0 0.0"/>
-      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      
       <mass value="0.01"/>
       <inertia
         ixx="0.0001"  ixy="0.0"     ixz="0.0"
@@ -556,6 +559,8 @@
       </material>
     </visual>
   </link>
+
+<!-- *****************************************FINGER 3**************************************************** -->
 
   <joint name="proximal_joint_3" type="continuous">
     <origin
