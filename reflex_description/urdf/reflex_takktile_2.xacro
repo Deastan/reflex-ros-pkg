@@ -541,11 +541,63 @@
       xyz="0 0 0" />
   </joint>
 
-  <link name="distal_2">
+  <link name="flex_link_2">
+     <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001"  ixy="0.0"     ixz="0.0"
+                      iyy="0.0001"  iyz="0.0"
+                                    izz="0.0001"/>
+    </inertial>
+
     <visual>
-      <origin
-        xyz="-0.077 0.007 0.006"
-        rpy="3.1459 0 0" />
+        <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
+          <box size="${flex_length*1.0} 0.014 0.006"/>
+        </geometry>
+        <material
+          name="">
+          <xacro:flex_color/>
+        </material>
+      </visual>
+    
+    <collision>
+      <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
+        <box size="${flex_length*1.0} 0.014 0.006"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- TODO: DISTANCE TO CHECK!!!! -->
+  <joint name="flex_joint_2" type="fixed">
+    <parent link="proximal_2"/>
+    <child link="flex_link_2"/>
+    <!-- <origin xyz="0.060 0 0.003"/>
+    <axis xyz="0 -1 0"/> -->
+    <origin xyz="${prox_length} 0 ${0.001}" />
+      <axis xyz="0 -1 0"/>
+  </joint>
+
+  <link name="distal_2">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001"  ixy="0.0"     ixz="0.0"
+                      iyy="0.0001"  iyz="0.0"
+                                    izz="0.0001"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="-0.077 0.007 0.006" rpy="3.1459 0 0" />
       <geometry>
         <mesh
           filename="package://reflex_description/meshes/distal_1.STL" />
@@ -555,13 +607,20 @@
         <xacro:distal_color/>
       </material>
     </visual>
+
+    <collision>
+      <origin xyz="-0.077 0.007 0.006" rpy="3.1459 0 0" />
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/distal_1.STL" />
+        <!-- <box size="${flex_length*1.0} 0.014 0.006"/> -->
+      </geometry>
+    </collision>
   </link>
+
   <joint name="distal_joint_2" type="continuous">
-    <origin
-      xyz="0.0760000000000001 0 0.00249999999999997"
-      rpy="0 0 0" />
+    <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent
-      link="proximal_2" />
+      link="flex_link_2" />
     <child
       link="distal_2" />
     <axis
@@ -569,19 +628,34 @@
   </joint>
 
   <link name="distal_pad_2">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001"  ixy="0.0"     ixz="0.0"
+                      iyy="0.0001"  iyz="0.0"
+                                    izz="0.0001"/>
+    </inertial>
+
     <visual>
-      <origin
-        xyz="-0.00825 0.009 0.057"
-        rpy="1.5708 1.5708 0" />
+      <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/distal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.STL" />
       </geometry>
       <material
         name="">
         <xacro:pad_color/>
       </material>
     </visual>
+
+    <collision>
+      <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.STL" />
+      </geometry>
+    </collision>
   </link>
 
   <joint name="dist2_pad_joint" type="fixed">
@@ -596,11 +670,22 @@
       xyz="0 0 0" />
   </joint>
 
+<!-- *****************************************FINGER 3**************************************************** -->
+
   <link name="proximal_3">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001" ixy="0.0" ixz="0.0"
+                         iyy="0.0001"  iyz="0.0"
+                                           izz="0.0001"/>
+    </inertial>
+
     <visual>
-      <origin
-        xyz="-0.011 0.007 0.011"
-        rpy="3.1459 0 0"/>
+      <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
       <geometry>
         <mesh
           filename="package://reflex_description/meshes/proximal_1.STL" />
@@ -610,9 +695,14 @@
         <xacro:proximal_color/>
       </material>
     </visual>
-  </link>
 
-<!-- *****************************************FINGER 3**************************************************** -->
+    <collision>
+      <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/proximal_1.STL" />
+      </geometry>
+    </collision>
+  </link>
 
   <joint name="proximal_joint_3" type="continuous">
     <origin
@@ -627,10 +717,19 @@
   </joint>
 
   <link name="proximal_pad_3">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001" ixy="0.0" ixz="0.0"
+                         iyy="0.0001"  iyz="0.0"
+                                           izz="0.0001"/>
+    </inertial>
+
     <visual>
-      <origin
-        xyz="-0.008 0.014 -0.002"
-        rpy="1.5708 1.5708 0" />
+      <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
         <mesh
           filename="package://reflex_description/meshes/proximal_pad_1.STL" />
@@ -640,6 +739,13 @@
         <xacro:pad_color/>
       </material>
     </visual>
+
+    <collision>
+      <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+      </geometry>
+    </collision>
   </link>
 
   <joint name="prox3_pad_joint" type="fixed">
@@ -654,11 +760,63 @@
       xyz="0 0 0" />
   </joint>
 
-  <link name="distal_3">
+  <link name="flex_link_3">
+     <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001"  ixy="0.0"     ixz="0.0"
+                      iyy="0.0001"  iyz="0.0"
+                                    izz="0.0001"/>
+    </inertial>
+
     <visual>
-      <origin
-        xyz="-0.077 0.007 0.006"
-        rpy="3.1459 0 0" />
+        <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
+          <box size="${flex_length*1.0} 0.014 0.006"/>
+        </geometry>
+        <material
+          name="">
+          <xacro:flex_color/>
+        </material>
+      </visual>
+    
+    <collision>
+      <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
+        <box size="${flex_length*1.0} 0.014 0.006"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- TODO: DISTANCE TO CHECK!!!! -->
+  <joint name="flex_joint_3" type="fixed">
+    <parent link="proximal_3"/>
+    <child link="flex_link_3"/>
+    <!-- <origin xyz="0.060 0 0.003"/>
+    <axis xyz="0 -1 0"/> -->
+    <origin xyz="${prox_length} 0 ${0.001}" />
+      <axis xyz="0 -1 0"/>
+  </joint>
+
+  <link name="distal_3">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001"  ixy="0.0"     ixz="0.0"
+                      iyy="0.0001"  iyz="0.0"
+                                    izz="0.0001"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="-0.077 0.007 0.006" rpy="3.1459 0 0" />
       <geometry>
         <mesh
           filename="package://reflex_description/meshes/distal_1.STL" />
@@ -668,14 +826,19 @@
         <xacro:distal_color/>
       </material>
     </visual>
+
+    <collision>
+      <origin xyz="-0.077 0.007 0.006" rpy="3.1459 0 0" />
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/distal_1.STL" />
+      </geometry>
+    </collision>
   </link>
 
   <joint name="distal_joint_3" type="continuous">
-    <origin
-      xyz="0.0760000000000001 0 0.0025"
-      rpy="-1.48887961834512E-45 -1.0995850059156E-76 -7.38531841236285E-32" />
+    <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent
-      link="proximal_3" />
+      link="flex_link_3" />
     <child
       link="distal_3" />
     <axis
@@ -683,10 +846,19 @@
   </joint>
 
   <link name="distal_pad_3">
+    <inertial>
+      <!-- TODO: CALCULATES CENTER OF MASS -->
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
+      <mass value="0.01"/>
+      <inertia
+        ixx="0.0001"  ixy="0.0"     ixz="0.0"
+                      iyy="0.0001"  iyz="0.0"
+                                    izz="0.0001"/>
+    </inertial>
+
     <visual>
-      <origin
-        xyz="-0.00825 0.009 0.057"
-        rpy="1.5708 1.5708 0" />
+      <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
       <geometry>
         <mesh
           filename="package://reflex_description/meshes/distal_pad_1.STL" />
@@ -696,6 +868,13 @@
         <xacro:pad_color/>
       </material>
     </visual>
+
+    <collision>
+      <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.STL" />
+      </geometry>
+    </collision>
   </link>
 
   <joint name="dist3_pad_joint" type="fixed">
