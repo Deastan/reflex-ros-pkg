@@ -9,6 +9,7 @@
 
 <!-- Transmission -->
 <!-- Preshape -->
+
   <transmission name="preshape_1_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="preshape_1">
@@ -19,6 +20,53 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+
+  <transmission name="preshape_2_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="preshape_2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="preshape_2_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+<!-- Proximal -->
+
+  <transmission name="proximal_1_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="proximal_joint_1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="proximal_1_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="proximal_2_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="proximal_joint_2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="proximal_2_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="proximal_3_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="proximal_joint_3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="proximal_3_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
 
 </robot>
 
