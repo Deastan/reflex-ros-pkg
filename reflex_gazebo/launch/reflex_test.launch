@@ -30,7 +30,7 @@
 
     <!-- Spawn controllers - it uses a JointController -->
         <include file="$(find reflex_control)/launch/reflex_control.launch">
-            <arg name="controllers" default="joint_state_controller preshape_1_position_controller"/>
+            <arg name="controllers" default="joint_state_controller preshape_1_position_controller "/>
             <arg name="robot_name" default="reflex_takktile_2" />
             <arg name="model" default="takktile_2" />
         </include>

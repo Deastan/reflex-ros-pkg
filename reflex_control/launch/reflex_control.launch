@@ -4,7 +4,8 @@
     <!-- Launches the controllers according to the hardware interface selected -->
     <!-- Everythings is spawned under a namespace with the same name as the robot's. -->
     
-    <arg name="controllers" default="joint_state_controller preshape_1_position_controller"/>
+    <arg name="controllers" default="joint_state_controller preshape_1_position_controller "/>
+        <!-- preshape_2_position_controller proximal_joint_1_position_controller proximal_joint_2_position_controller proximal_joint_3_position_controller"/> -->
     <arg name="robot_name" default="reflex_takktile_2" />
     <arg name="model" default="takktile_2" />
     

@@ -110,7 +110,7 @@
       xyz="0 0 0" />
   </joint>
 
-  <!-- *****************************************FINGER 1**************************************************** -->
+<!-- *****************************************FINGER 1**************************************************** -->
 
   <link name="swivel_1">
     <inertial>
@@ -320,7 +320,7 @@
     </collision>
   </link>
   
-  <joint name="distal_joint_1"  type="continuous">
+  <joint name="distal_joint_1"  type="fixed">
     <!-- type="revolute"> -->
     <!-- type="continuous"> -->
     <!-- <origin
@@ -381,7 +381,7 @@
     <axis xyz="0 0 0" />
   </joint>
 
-  <!-- *****************************************FINGER 2**************************************************** -->
+<!-- *****************************************FINGER 2**************************************************** -->
 
   <link name="swivel_2">
     <inertial>
@@ -593,7 +593,7 @@
     </collision>
   </link>
 
-  <joint name="distal_joint_2" type="continuous">
+  <joint name="distal_joint_2" type="fixed">
     <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent
       link="flex_link_2" />
@@ -811,7 +811,7 @@
     </collision>
   </link>
 
-  <joint name="distal_joint_3" type="continuous">
+  <joint name="distal_joint_3" type="fixed">
     <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent
       link="flex_link_3" />
@@ -864,14 +864,6 @@
     <axis
       xyz="0 0 0" />
   </joint>
-
-
-
-
-
-
-
-
 
 <!-- ################ ################ ################ ################ ################ ################ -->
 <!-- ################ THIS SECTION LINKS THE MARKERS (TACTILE DATA) TO THE CAD MESH ################ -->
@@ -933,6 +925,5 @@
   </joint>
 
   <link name="distal_3_tactile"/>
-
 
 </robot>

@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- Incudes -->
@@ -7,7 +8,8 @@
   <!-- <xacro:include filename="$(find reflex_description)/materials/reflex.materials.xacro" /> -->
 
 <!-- Transmission -->
-  <transmission name="preshape_transmission_1">
+<!-- Preshape -->
+  <transmission name="preshape_1_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="preshape_1">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
@@ -16,9 +18,8 @@
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-</transmission>
-  
-  
+  </transmission>
+
 </robot>
 
 
