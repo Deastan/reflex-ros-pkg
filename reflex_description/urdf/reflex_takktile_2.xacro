@@ -15,8 +15,20 @@
   <xacro:property name="proximal_pad_mass"  value="0.01"/>
   <xacro:property name="distal_pad_mass"    value="0.01"/>
   <xacro:property name="swivel_link_mass"   value="0.01"/>
-  <xacro:property name="base_link_mass"   value="0.74"/>
+  <xacro:property name="base_link_mass"     value="0.74"/>
   <xacro:property name="pad_mass"           value="0.1"/>
+
+<!-- Parameters joints -->
+  <!-- Preshape -->
+  <xacro:property name="preshape_joint_limit_lower"      value="-0.0872665"/>
+  <xacro:property name="preshape_joint_limit_upper"      value="2.09440"/>
+  <xacro:property name="preshape_joint_limit_velocity"   value="1.0"/>
+  <xacro:property name="preshape_joint_limit_effort"     value="30.0"/>
+  <!-- Proximal -->
+  <xacro:property name="proximal_joint_limit_lower"      value="0.0"/>
+  <xacro:property name="proximal_joint_limit_upper"      value="2.09440"/>
+  <xacro:property name="proximal_joint_limit_velocity"   value="1.0"/>
+  <xacro:property name="proximal_joint_limit_effort"     value="30.0"/>
 
 <!-- ################ ################ ################ ################ ################ ################ -->
 <!-- ################ XACRO PORTION OF THE URDF, FOR MAKING THE FLEXIBLE JOINTS ################ -->
@@ -144,16 +156,18 @@
     </collision>
   </link>
   
-  <joint name="preshape_1" type="continuous">
+  <joint name="preshape_1" type="revolute">
     <origin
       xyz="0.0503973683071414 -0.026 0.063"
       rpy="6.75550818663469E-16 1.97993848419069E-16 -2.77555756156289E-16" />
-    <parent
-      link="base_link" />
-    <child
-      link="swivel_1" />
-    <axis
-      xyz="0 0 -1" />
+    <parent link="base_link" />
+    <child link="swivel_1" />
+    <axis xyz="0 0 -1" />
+    <!-- <limit effort="30" velocity="1.0" lower="-0.0872665" upper="2.0944" /> -->
+    <limit effort="${preshape_joint_limit_effort}" 
+            velocity="${preshape_joint_limit_velocity}" 
+            lower="${preshape_joint_limit_lower}" 
+            upper="${preshape_joint_limit_upper}" />
   </joint>
   
   <link name="proximal_1">
@@ -188,16 +202,17 @@
     </collision>
   </link>
   
-  <joint name="proximal_joint_1" type="continuous">
+  <joint name="proximal_joint_1" type="revolute">
     <origin
       xyz="0.01 0 0.0186"
       rpy="-6.20039667432211E-16 0.05 2.22044604925031E-16" />
-    <parent
-      link="swivel_1" />
-    <child
-      link="proximal_1" />
-    <axis
-      xyz="0 -1 0" />
+    <parent link="swivel_1" />
+    <child link="proximal_1" />
+    <axis xyz="0 -1 0" />
+    <limit effort="${proximal_joint_limit_effort}" 
+            velocity="${proximal_joint_limit_velocity}" 
+            lower="${proximal_joint_limit_lower}" 
+            upper="${proximal_joint_limit_upper}" />
   </joint>
   
   <link name="proximal_pad_1">
@@ -417,16 +432,18 @@
     </collision>
   </link>
   
-  <joint name="preshape_2" type="continuous">
+  <joint name="preshape_2" type="revolute">
     <origin
       xyz="0.0503973683071413 0.0259999999999999 0.063"
       rpy="1.22459340959228E-15 -7.33448407631817E-16 -1.66533453693773E-16" />
-    <parent
-      link="base_link" />
-    <child
-      link="swivel_2" />
-    <axis
-      xyz="0 0 -1" />
+    <parent link="base_link" />
+    <child link="swivel_2" />
+    <axis xyz="0 0 -1" />
+    <!-- <limit effort="30" velocity="1.0" lower="-0.0872665" upper="2.0944" /> -->
+    <limit effort="${preshape_joint_limit_effort}" 
+            velocity="${preshape_joint_limit_velocity}" 
+            lower="${preshape_joint_limit_lower}" 
+            upper="${preshape_joint_limit_upper}" />
   </joint>
   
   <link name="proximal_2">
@@ -461,16 +478,17 @@
     </collision>
   </link>
 
-  <joint name="proximal_joint_2" type="continuous">
+  <joint name="proximal_joint_2" type="revolute">
     <origin
       xyz="0.01 0 0.0186"
       rpy="-1.16908225836102E-15 0.05 1.11022302462515E-16" />
-    <parent
-      link="swivel_2" />
-    <child
-      link="proximal_2" />
-    <axis
-      xyz="0 -1 0" />
+    <parent link="swivel_2" />
+    <child link="proximal_2" />
+    <axis xyz="0 -1 0" />
+    <limit effort="${proximal_joint_limit_effort}" 
+            velocity="${proximal_joint_limit_velocity}" 
+            lower="${proximal_joint_limit_lower}" 
+            upper="${proximal_joint_limit_upper}" />
   </joint>
 
   <link name="proximal_pad_2">
@@ -680,16 +698,17 @@
     </collision>
   </link>
 
-  <joint name="proximal_joint_3" type="continuous">
+  <joint name="proximal_joint_3" type="revolute">
     <origin
       xyz="-0.0299999999999996 0 0.0816000000000002"
       rpy="-5.55111512312578E-17 0.05 3.14159265358979" />
-    <parent
-      link="base_link" />
-    <child
-      link="proximal_3" />
-    <axis
-      xyz="0 -1 0" />
+    <parent link="base_link" />
+    <child link="proximal_3" />
+    <axis xyz="0 -1 0" />
+    <limit effort="${proximal_joint_limit_effort}" 
+            velocity="${proximal_joint_limit_velocity}" 
+            lower="${proximal_joint_limit_lower}" 
+            upper="${proximal_joint_limit_upper}" />
   </joint>
 
   <link name="proximal_pad_3">
