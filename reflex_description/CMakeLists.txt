@@ -9,13 +9,50 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   urdf
   visualization_msgs
+  gazebo_ros
+  std_msgs 
+  geometry_msgs
 )
 
-catkin_package()
+# Depend on system install of Gazebo
+find_package(gazebo REQUIRED)
 
-include_directories(
-  ${catkin_INCLUDE_DIRS}
+# Because GPU cluster says this package requires c++11 to build, not sure why.
+#   Builds fine without this on my laptop.
+set(CMAKE_CXX_FLAGS "-std=c++0x")
+
+###################################
+## catkin specific configuration ##
+###################################
+catkin_package(
+  #  INCLUDE_DIRS include
+  #  LIBRARIES reflex_gazebo
+  CATKIN_DEPENDS roscpp gazebo_ros reflex_gazebo_msgs
+#  DEPENDS Boost
 )
+
+#include_directories(
+#  ${catkin_INCLUDE_DIRS}
+#)
+
+###########
+## Build ##
+###########
+## Specify additional locations of header files
+## Your package locations should be listed before other locations
+include_directories(${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+link_directories(${GAZEBO_LIBRARY_DIRS})
+
+## Declare a cpp library
+add_library(contact src/ContactPlugin.cpp)
+
+## Declare a cpp executable
+add_executable(test_exec src/test.cpp)
+
+
+## Specify libraries to link a library or executable target against
+target_link_libraries(contact ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+
 
 ## Declare a cpp executable
 #add_executable(hand_visualizer2 src/hand_visualizer.cpp)

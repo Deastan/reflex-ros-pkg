@@ -244,7 +244,7 @@
       </material>
     </visual>
 
-    <collision>
+    <collision name="proximal_pad_1_collision">
       <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
         <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />

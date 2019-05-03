@@ -13,13 +13,14 @@
             proximal_joint_3_position_controller"/>
     <arg name="robot_name" default="reflex_takktile_2" />
     <arg name="model" default="takktile_2" />
+    <arg name="namespace" default="$(arg robot_name)"/>
     
     <!-- Loads joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find reflex_control)/config/reflex_control.yaml" command="load" />
     
     <!-- Loads the controllers -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-          output="screen" ns="/reflex_takktile_2" args="$(arg controllers) --shutdown-timeout 2" />
+          output="screen" ns="/$(arg namespace)" args="$(arg controllers) --shutdown-timeout 2" />
     
     <!-- Converts joint states to TF transforms for rviz, etc -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
