@@ -20,15 +20,18 @@
 
 <!-- Parameters joints -->
   <!-- Preshape -->
+  <xacro:property name="preshape_joint_limit_effort"     value="1.0"/>
+  <xacro:property name="preshape_joint_limit_velocity"   value="1.0"/>
   <xacro:property name="preshape_joint_limit_lower"      value="-0.0872665"/>
   <xacro:property name="preshape_joint_limit_upper"      value="2.09440"/>
-  <xacro:property name="preshape_joint_limit_velocity"   value="1.0"/>
-  <xacro:property name="preshape_joint_limit_effort"     value="30.0"/>
+  
   <!-- Proximal -->
+  <xacro:property name="proximal_joint_limit_effort"     value="1.0"/>
+  <xacro:property name="proximal_joint_limit_velocity"   value="1.0"/>
   <xacro:property name="proximal_joint_limit_lower"      value="0.0"/>
   <xacro:property name="proximal_joint_limit_upper"      value="2.09440"/>
-  <xacro:property name="proximal_joint_limit_velocity"   value="1.0"/>
-  <xacro:property name="proximal_joint_limit_effort"     value="30.0"/>
+  
+  
 
 <!-- ################ ################ ################ ################ ################ ################ -->
 <!-- ################ XACRO PORTION OF THE URDF, FOR MAKING THE FLEXIBLE JOINTS ################ -->

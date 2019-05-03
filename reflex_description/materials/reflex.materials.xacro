@@ -24,6 +24,8 @@
   </gazebo>
   <gazebo reference="distal_1">
     <material>Gazebo/FlatBlack</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
   </gazebo>
   <gazebo reference="distal_2">
     <material>Gazebo/FlatBlack</material>
