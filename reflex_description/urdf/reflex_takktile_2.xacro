@@ -7,6 +7,7 @@
   <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" />
   <xacro:include filename="$(find reflex_description)/urdf/reflex.gazebo.xacro" />
   <xacro:include filename="$(find reflex_description)/materials/reflex.materials.xacro" />
+  <xacro:include filename="$(find reflex_description)/urdf/tactile_sensors.xacro" />
 
 <!-- Properties -->
   <xacro:property name="flex_link_mass"     value="0.01"/>
@@ -38,6 +39,7 @@
 <!-- ################ ################ ################ ################ ################ ################ -->
 
   <xacro:property name="flex_length" value="0.016" />
+  <xacro:property name="distal_length" value="0.050" />
   <xacro:property name="num_steps" value="9" />
   <xacro:property name="prox_length" value="0.060" />
   <xacro:property name="pi" value="3.1415" />
@@ -899,7 +901,7 @@
 <!-- ################ COPY AND PASTE THIS FROM urdf/homemade_marker_portion_urdf  ################ -->
 <!-- ################ ################ ################ ################ ################ ################ -->
 
-  <joint name="base_tactile_joint" type="fixed">
+  <!-- <joint name="base_tactile_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="base_tactile" />
@@ -953,6 +955,44 @@
     <child link="distal_3_tactile" />
   </joint>
 
-  <link name="distal_3_tactile"/>
+  <link name="distal_3_tactile"/> -->
+
+  <!-- Tactile sensors -->
+  <!-- Example -->
+  <!-- <collision name="proximal_pad_1_collision">
+      <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+      </geometry>
+    </collision> -->
+
+  <!-- <link name="proximal_1_sensor_1"> 
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia
+        ixx="0.00000000001" ixy="0.0" ixz="0.0"
+                        iyy="0.00000000001"  iyz="0.0"
+                                          izz="0.00000000001"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0.0 0" />
+      <geometry>
+        
+        <cylinder length="0.002" radius="0.004"/>
+      </geometry>
+      
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0.0 0" />
+      <geometry>
+       
+        <cylinder length="0.002" radius="0.004"/>
+      </geometry>
+    </collision>
+  </link> -->
+
+
 
 </robot>

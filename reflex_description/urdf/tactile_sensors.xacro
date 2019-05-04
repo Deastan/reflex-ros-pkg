@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+<!-- Jonathan Burkhard, ETH Zurich, Switzerland
+   01.05.2019 -->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+    <!-- Properties proximal-->
+    <xacro:property name="proximal_offset_x"   value="0.014"/>
+    <xacro:property name="proximal_offset_y"   value="0.0"/>
+    <xacro:property name="proximal_offset_z"   value="0.014"/>
+    <xacro:property name="number_separation"   value="8.0"/>
+
+    <!-- Properties distal-->
+    <xacro:property name="distal_offset_x"   value="0.012"/>
+    <xacro:property name="distal_offset_y"   value="0.0"/>
+    <xacro:property name="distal_offset_z"   value="0.010"/>
+    <xacro:property name="number_separation_distal"   value="5.0"/>
+
+
+    <!-- Sensors parameters -->
+    <xacro:property name="radius"   value="0.003"/>
+    <xacro:property name="length"   value="0.001"/>
+
+    <xacro:macro name="proximal_sensor_macro" params="finger_number">
+        <link name="proximal_${finger_number}_sensor_1">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="proximal_${finger_number}_sensor_1_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="proximal_${finger_number}_sensor_1_joint" type="revolute">
+            <origin xyz="${proximal_offset_x+prox_length/number_separation*1} ${0.0} ${proximal_offset_z}" />
+            <parent link="proximal_${finger_number}" />
+            <child link="proximal_${finger_number}_sensor_1" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+
+        <link name="proximal_${finger_number}_sensor_2">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="proximal_${finger_number}_sensor_2_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="proximal_${finger_number}_sensor_2_joint" type="revolute">
+            <origin xyz="${proximal_offset_x + prox_length/number_separation*2} ${0.0} ${proximal_offset_z}" />
+            <parent link="proximal_${finger_number}" />
+            <child link="proximal_${finger_number}_sensor_2" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+
+        <link name="proximal_${finger_number}_sensor_3">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="proximal_${finger_number}_sensor_3_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="proximal_${finger_number}_sensor_3_joint" type="revolute">
+            <origin xyz="${proximal_offset_x + prox_length/number_separation*3} ${0.0} ${proximal_offset_z}" />
+            <parent link="proximal_${finger_number}" />
+            <child link="proximal_${finger_number}_sensor_3" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+
+        <link name="proximal_${finger_number}_sensor_4">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="proximal_${finger_number}_sensor_4_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="proximal_${finger_number}_sensor_4_joint" type="revolute">
+            <origin xyz="${proximal_offset_x + prox_length/number_separation*4} ${0.0} ${proximal_offset_z}" />
+            <parent link="proximal_${finger_number}" />
+            <child link="proximal_${finger_number}_sensor_4" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+
+        <link name="proximal_${finger_number}_sensor_5">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="proximal_${finger_number}_sensor_5_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="proximal_${finger_number}_sensor_5_joint" type="revolute">
+            <origin xyz="${proximal_offset_x + prox_length/number_separation*5} ${0.0} ${proximal_offset_z}" />
+            <parent link="proximal_${finger_number}" />
+            <child link="proximal_${finger_number}_sensor_5" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="distal_sensor_macro" params="finger_number">
+        <link name="distal_${finger_number}_sensor_1">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="distal_${finger_number}_sensor_1_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="distal_${finger_number}_sensor_1_joint" type="revolute">
+            <origin xyz="${distal_offset_x+distal_length/number_separation*1} ${0.0} ${distal_offset_z}" />
+            <parent link="distal_${finger_number}" />
+            <child link="distal_${finger_number}_sensor_1" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+
+        <link name="distal_${finger_number}_sensor_2">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="distal_${finger_number}_sensor_2_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="distal_${finger_number}_sensor_2_joint" type="revolute">
+            <origin xyz="${distal_offset_x+distal_length/number_separation*2} ${0.0} ${distal_offset_z}" />
+            <parent link="distal_${finger_number}" />
+            <child link="distal_${finger_number}_sensor_2" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+
+        <link name="distal_${finger_number}_sensor_3">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="distal_${finger_number}_sensor_3_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="distal_${finger_number}_sensor_3_joint" type="revolute">
+            <origin xyz="${distal_offset_x+distal_length/number_separation*3} ${0.0} ${distal_offset_z}" />
+            <parent link="distal_${finger_number}" />
+            <child link="distal_${finger_number}_sensor_3" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+
+        <link name="distal_${finger_number}_sensor_4">
+            <inertial>
+            <origin xyz="0.0 0.0 0.0"/>
+            <mass value="0.0001"/>
+            <inertia
+                ixx="0.000001"  ixy="0.0"     ixz="0.0"
+                            iyy="0.000001"  iyz="0.0"
+                                            izz="0.000001"/>
+            </inertial>
+            
+            <visual>
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            <material
+                name="">
+                <xacro:pad_color/>
+            </material>
+            </visual>
+
+            <collision name="distal_${finger_number}_sensor_4_collision">
+            <origin xyz="0 0 0" rpy="0 0.0 0" />
+            <geometry>
+                <cylinder length="${length}" radius="${radius}"/>
+            </geometry>
+            </collision>
+        </link>
+
+        <joint name="distal_${finger_number}_sensor_4_joint" type="revolute">
+            <origin xyz="${distal_offset_x+distal_length/number_separation*4} ${0.0} ${distal_offset_z}" />
+            <parent link="distal_${finger_number}" />
+            <child link="distal_${finger_number}_sensor_4" />
+            <limit effort="0" velocity="0" lower="0" upper="0" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:distal_sensor_macro finger_number="1" />
+    <xacro:distal_sensor_macro finger_number="2" />
+    <xacro:distal_sensor_macro finger_number="3" />
+
+    <!-- Create sensor for proximal -->
+    <xacro:proximal_sensor_macro finger_number="1" />
+    <xacro:proximal_sensor_macro finger_number="3" />
+    <xacro:proximal_sensor_macro finger_number="2" />
+
+
+
+</robot>

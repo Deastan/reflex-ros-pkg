@@ -43,6 +43,36 @@
     </sensor>
   </gazebo> -->
 
+  <xacro:macro name="proximal_sensor_gazebo_macro" params="finger_number sensor_number">
+    <gazebo reference="proximal_${finger_number}_sensor_${sensor_number}">
+      <sensor name='proximal_${finger_number}_sensor_${sensor_number}_contact_sensor' type='contact'>
+        <plugin name="proximal_${finger_number}_sensor_${sensor_number}_contact_sensor_plugin" filename="libcontact.so"/>
+            <contact>
+              <collision>proximal_${finger_number}_sensor_${sensor_number}_collision</collision>
+            </contact>        
+        <update_rate>30</update_rate>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:proximal_sensor_gazebo_macro finger_number="1" sensor_number="1"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="1" sensor_number="2"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="1" sensor_number="3"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="1" sensor_number="4"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="1" sensor_number="5"/>
+
+  <xacro:proximal_sensor_gazebo_macro finger_number="2" sensor_number="1"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="2" sensor_number="2"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="2" sensor_number="3"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="2" sensor_number="4"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="2" sensor_number="5"/>
+
+  <xacro:proximal_sensor_gazebo_macro finger_number="3" sensor_number="1"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="3" sensor_number="2"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="3" sensor_number="3"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="3" sensor_number="4"/>
+  <xacro:proximal_sensor_gazebo_macro finger_number="3" sensor_number="5"/>
+
   <!-- Distal -->
   <!-- 4 sensors on the distal -->
   <!-- <gazebo reference="distal_1_sensor_1">
@@ -55,4 +85,31 @@
     </sensor>
   </gazebo> -->
 
+  <xacro:macro name="distal_sensor_gazebo_macro" params="finger_number sensor_number">
+    <gazebo reference="distal_${finger_number}_sensor_${sensor_number}">
+      <sensor name='distal_${finger_number}_sensor_${sensor_number}_contact_sensor' type='contact'>
+        <plugin name="distal_${finger_number}_sensor_${sensor_number}_contact_sensor_plugin" filename="libcontact.so"/>
+            <contact>
+              <collision>distal_${finger_number}_sensor_${sensor_number}_collision</collision>
+            </contact>        
+        <update_rate>30</update_rate>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:distal_sensor_gazebo_macro finger_number="1" sensor_number="1"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="1" sensor_number="2"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="1" sensor_number="3"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="1" sensor_number="4"/>
+
+  <xacro:distal_sensor_gazebo_macro finger_number="2" sensor_number="1"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="2" sensor_number="2"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="2" sensor_number="3"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="2" sensor_number="4"/>
+
+  <xacro:distal_sensor_gazebo_macro finger_number="3" sensor_number="1"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="3" sensor_number="2"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="3" sensor_number="3"/>
+  <xacro:distal_sensor_gazebo_macro finger_number="3" sensor_number="4"/>
+  
 </robot>
