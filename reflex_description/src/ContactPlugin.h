@@ -8,15 +8,10 @@
 #define _GAZEBO_CONTACT_PLUGIN_HH_
 
 #include <string>
-#include <std_msgs/Int32.h>
 #include <std_msgs/Bool.h>
 
 // ROS
 #include <ros/ros.h>
-
-
-// My packages
-#include <reflex_msgs2/FingerPressure.h>
 
 #include <gazebo/gazebo.hh>
 #include <gazebo/sensors/sensors.hh>
@@ -47,8 +42,8 @@ namespace gazebo
     /// updated signal and the OnUpdate callback.
     private: event::ConnectionPtr updateConnection;
 
-    /// Ros part 
-    /// Initialization
+    // ROS part 
+    // Initialization
     private: std::string name_sensor; // Name of the sensors for the topic
     private: ros::NodeHandle nh; /// node
     private: ros::Publisher contact_publisher; // publisher for ros

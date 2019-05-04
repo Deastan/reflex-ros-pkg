@@ -2,6 +2,11 @@
  * Jonathan Burkhard, SMS-Lab, ETH Zurich, Switzerland
  * Jonathan Burkhard, CSEM S.A., Alpnach Dorf, Switzerland
  *
+ * Contact plugin
+ * Input :    Contact from Gazebo
+ * Output :   publish message with the name of the sensors
+ *            True if there is a contact
+ *            False if there is not a contact 
  */
 
 #include "ContactPlugin.h"
@@ -29,7 +34,6 @@ ContactPlugin::~ContactPlugin()
 }
 
 /////////////////////////////////////////////////
-
 void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)
 {
   // Make sure the ROS node for Gazebo has already been initialized
@@ -61,7 +65,6 @@ void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)
   // Make sure the parent sensor is active.
   this->parentSensor->SetActive(true);
 
-  // std::cerr << "\nName of the sensor is [" << _sensor->GetName() << "]\n" << std::endl;
   name_sensor = "/reflex_takktile_2/" + _sensor->GetName();
   std::cerr << name_sensor << std::endl;
   contact_publisher = nh.advertise <std_msgs::Bool>(name_sensor, 30);
