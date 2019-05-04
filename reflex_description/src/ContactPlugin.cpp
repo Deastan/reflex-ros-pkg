@@ -1,3 +1,9 @@
+/*
+ * Jonathan Burkhard, SMS-Lab, ETH Zurich, Switzerland
+ * Jonathan Burkhard, CSEM S.A., Alpnach Dorf, Switzerland
+ *
+ */
+
 #include "ContactPlugin.h"
 
 using namespace gazebo;
@@ -34,12 +40,10 @@ void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)
     return;
   }
 
-  ROS_INFO ("********** I am in ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)");
-  std::cout << "BIM BIM BIM : ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)" << std::endl;
   // Changing std to boost
   // boost::dynamic_pointer_cast<sensors::ContactSensor>(_sensor);
   // std::dynamic_pointer_cast<sensors::ContactSensor>(_sensor);
-  // Get the parent sensor.
+  // Get the parent sensor
   this->parentSensor = 
     boost::dynamic_pointer_cast<sensors::ContactSensor>(_sensor);
 
@@ -56,6 +60,11 @@ void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)
 
   // Make sure the parent sensor is active.
   this->parentSensor->SetActive(true);
+
+  // std::cerr << "\nName of the sensor is [" << _sensor->GetName() << "]\n" << std::endl;
+  name_sensor = "/reflex_takktile_2/" + _sensor->GetName();
+  std::cerr << name_sensor << std::endl;
+  contact_publisher = nh.advertise <std_msgs::Bool>(name_sensor, 30);
 }
 
 /////////////////////////////////////////////////
@@ -67,28 +76,20 @@ void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)
 // Be sure to check the Gazebo version on the tutorial's top-right corner.
 void ContactPlugin::OnUpdate()
 {   
-  ROS_INFO ("********** I am in ContactPlugin::OnUpdate()");
-  std::cout << "BIM BIM BIM : ContactPlugin::OnUpdate()" << std::endl;
   // Get all the contacts.
   msgs::Contacts contacts;
   contacts = this->parentSensor->GetContacts();
 
-  for (unsigned int i = 0; i < contacts.contact_size(); ++i)
+  if(contacts.contact_size () > 0)
   {
-    std::cout << "Collision between[" << contacts.contact(i).collision1()
-              << "] and [" << contacts.contact(i).collision2() << "]\n";
-
-    for (unsigned int j = 0; j < contacts.contact(i).position_size(); ++j)
-    {
-      std::cout << j << "  Position:"
-                << contacts.contact(i).position(j).x() << " "
-                << contacts.contact(i).position(j).y() << " "
-                << contacts.contact(i).position(j).z() << "\n";
-      std::cout << "   Normal:"
-                << contacts.contact(i).normal(j).x() << " "
-                << contacts.contact(i).normal(j).y() << " "
-                << contacts.contact(i).normal(j).z() << "\n";
-      std::cout << "   Depth:" << contacts.contact(i).depth(j) << "\n";
-    }
+    ROS_INFO ("There is a contact ! ");
+    // contact_message.header.stamp = ros::Time::now ();
+    contact_message.data = true;
+    contact_publisher.publish (contact_message);
+  }else
+  {
+    // contact_message.header.stamp = ros::Time::now ();
+    contact_message.data = false;
+    contact_publisher.publish (contact_message);
   }
 }

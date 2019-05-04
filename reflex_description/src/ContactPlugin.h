@@ -1,8 +1,15 @@
+/*
+ * Jonathan Burkhard, SMS-Lab, ETH Zurich, Switzerland
+ * Jonathan Burkhard, CSEM S.A., Alpnach Dorf, Switzerland
+ *
+ */
+
 #ifndef _GAZEBO_CONTACT_PLUGIN_HH_
 #define _GAZEBO_CONTACT_PLUGIN_HH_
 
 #include <string>
 #include <std_msgs/Int32.h>
+#include <std_msgs/Bool.h>
 
 // ROS
 #include <ros/ros.h>
@@ -39,6 +46,13 @@ namespace gazebo
     /// \brief Connection that maintains a link between the contact sensor's
     /// updated signal and the OnUpdate callback.
     private: event::ConnectionPtr updateConnection;
+
+    /// Ros part 
+    /// Initialization
+    private: std::string name_sensor; // Name of the sensors for the topic
+    private: ros::NodeHandle nh; /// node
+    private: ros::Publisher contact_publisher; // publisher for ros
+    private: std_msgs::Bool contact_message;
   };
 }
 #endif
