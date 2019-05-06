@@ -67,6 +67,39 @@
     </actuator>
   </transmission>
 
+  <!-- Distal -->
+  <transmission name="distal_1_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="distal_joint_1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="distal_1_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="distal_2_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="distal_joint_2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="distal_2_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="distal_3_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="distal_joint_3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="distal_3_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
 </robot>
 

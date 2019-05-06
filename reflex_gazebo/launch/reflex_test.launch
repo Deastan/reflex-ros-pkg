@@ -33,7 +33,10 @@
                 preshape_2_position_controller 
                 proximal_joint_1_position_controller
                 proximal_joint_2_position_controller 
-                proximal_joint_3_position_controller"/>
+                proximal_joint_3_position_controller
+                distal_joint_1_position_controller
+                distal_joint_2_position_controller
+                distal_joint_3_position_controller"/>
             <arg name="robot_name" default="$(arg robot_name)" />
             <arg name="model" default="$(arg model)" />
             <arg name="namespace" default="$(arg namespace)"/>

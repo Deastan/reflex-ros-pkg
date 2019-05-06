@@ -10,7 +10,10 @@
             preshape_2_position_controller
             proximal_joint_1_position_controller 
             proximal_joint_2_position_controller 
-            proximal_joint_3_position_controller"/>
+            proximal_joint_3_position_controller
+            distal_joint_1_position_controller
+            distal_joint_2_position_controller
+            distal_joint_3_position_controller"/>
     <arg name="robot_name" default="reflex_takktile_2" />
     <arg name="model" default="takktile_2" />
     <arg name="namespace" default="$(arg robot_name)"/>

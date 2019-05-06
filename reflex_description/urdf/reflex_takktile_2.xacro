@@ -13,8 +13,6 @@
   <xacro:include filename="$(find reflex_description)/urdf/reflex.gazebo.xacro" />
   <xacro:include filename="$(find reflex_description)/materials/reflex.materials.xacro" />
   <xacro:include filename="$(find reflex_description)/urdf/tactile_sensors.xacro" />
-  <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.xacro"/>
-  <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.urdf.xacro"/>
 
 <!-- Properties -->
   <xacro:property name="flex_link_mass"     value="0.01"/>
@@ -26,7 +24,7 @@
   <xacro:property name="base_link_mass"     value="0.74"/>
   <xacro:property name="pad_mass"           value="0.1"/>
 
-<!-- Parameters joints -->
+<!-- Parameters Limits Joints -->
   <!-- Preshape -->
   <xacro:property name="preshape_joint_limit_effort"     value="1.0"/>
   <xacro:property name="preshape_joint_limit_velocity"   value="1.0"/>
@@ -38,9 +36,13 @@
   <xacro:property name="proximal_joint_limit_velocity"   value="1.0"/>
   <xacro:property name="proximal_joint_limit_lower"      value="0.0"/>
   <xacro:property name="proximal_joint_limit_upper"      value="2.09440"/>
-  
-  
 
+  <!-- Distal -->
+  <xacro:property name="distal_joint_limit_effort"     value="1.0"/>
+  <xacro:property name="distal_joint_limit_velocity"   value="1.0"/>
+  <xacro:property name="distal_joint_limit_lower"      value="0.0"/>
+  <xacro:property name="distal_joint_limit_upper"      value="1.8"/>
+  
 <!-- ################ ################ ################ ################ ################ ################ -->
 <!-- ################ XACRO PORTION OF THE URDF, FOR MAKING THE FLEXIBLE JOINTS ################ -->
 <!-- ################ ################ ################ ################ ################ ################ -->
@@ -56,6 +58,7 @@
 <!-- ################ YOU CAN ALTER THE COLORS FROM HERE ################ -->
 <!-- ################ COMMENT OUT ALL dist*_joint PIECES OF THIS URDF SO THE FLEX JOINTS CAN LINK UP ################ -->
 <!-- ################ ################ ################ ################ ################ ################ -->
+
   <link name="base_link">
     <inertial>
       <!-- TODO: CALCULATES CENTER OF MASS -->
@@ -361,26 +364,15 @@
     </collision>
   </link>
   
-  <joint name="distal_joint_1"  type="fixed">
-    <!-- type="revolute"> -->
-    <!-- type="continuous"> -->
-    <!-- <origin
-      xyz="0.07600000000000001 0 0.00250000000000002"
-      rpy="0 0 0" />
-    <parent
-      link="proximal_1" />
-    <child
-      link="distal_1" />
-    <axis
-      xyz="0 -1 0" /> -->
-    <!-- <origin xyz="${flex_length} 0 0.00250000000000002" rpy="0 0 0" /> -->
-    <!-- <origin xyz="${flex_length-0.01} 0 0.008" rpy="0 0 0" /> -->
-    <!-- <origin xyz="${flex_length-0.01} 0 0.000" rpy="0 0 0" /> -->
+  <joint name="distal_joint_1"  type="revolute">
     <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent link="flex_link_1" />
     <child link="distal_1" />
     <axis xyz="0 -1 0" />
-    <!-- <limit effort="0.25" velocity="1.0" lower="0" upper="2.74" /> -->
+    <limit effort="${distal_joint_limit_effort}" 
+            velocity="${distal_joint_limit_velocity}" 
+            lower="${distal_joint_limit_lower}" 
+            upper="${distal_joint_limit_upper}" />
   </joint>
   
   <link name="distal_pad_1">
@@ -637,14 +629,16 @@
     </collision>
   </link>
 
-  <joint name="distal_joint_2" type="fixed">
+  <joint name="distal_joint_2" type="revolute">
     <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent
       link="flex_link_2" />
-    <child
-      link="distal_2" />
-    <axis
-      xyz="0 -1 0" />
+    <child link="distal_2" />
+    <axis xyz="0 -1 0" />
+      <limit effort="${distal_joint_limit_effort}" 
+            velocity="${distal_joint_limit_velocity}" 
+            lower="${distal_joint_limit_lower}" 
+            upper="${distal_joint_limit_upper}" />
   </joint>
 
   <link name="distal_pad_2">
@@ -856,14 +850,16 @@
     </collision>
   </link>
 
-  <joint name="distal_joint_3" type="fixed">
+  <joint name="distal_joint_3" type="revolute">
     <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent
       link="flex_link_3" />
-    <child
-      link="distal_3" />
-    <axis
-      xyz="0 -1 0" />
+    <child link="distal_3" />
+    <axis xyz="0 -1 0" />
+      <limit effort="${distal_joint_limit_effort}" 
+            velocity="${distal_joint_limit_velocity}" 
+            lower="${distal_joint_limit_lower}" 
+            upper="${distal_joint_limit_upper}" />
   </joint>
 
   <link name="distal_pad_3">

@@ -5,12 +5,7 @@
 <!-- Incudes -->
   <!-- <xacro:include filename="$(find reflex_description)/urdf/reflex_takktile_2.xacro" />
   <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" /> -->
-
-  <!-- Transmissions -->
-  <!-- <xacro:if value="$(arg actuate_reflex)">
-    <xacro:include filename="$(find ll4ma_robots_description)/urdf/reflex/reflex.transmission.xacro"/>
-  </xacro:if> -->
-
+  
 <!-- Load Gazebo lib and set the robot namespace -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
@@ -19,17 +14,6 @@
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
   </gazebo>
-  
-  <!-- Keep for souvenir -->
-  <!-- <gazebo reference="proximal_pad_1">
-    <sensor name='proximal_pad_1_contact_sensor' type='contact'>
-      <plugin name="proximal_pad_1_contact_sensor_plugin" filename="libcontact.so"/>
-          <contact>
-            <collision>proximal_pad_1_collision</collision>
-          </contact>        
-      <update_rate>30</update_rate>
-    </sensor>
-  </gazebo> -->
 
   <!-- Proximal  -->
   <!-- 5 sensors on the proximal -->
@@ -111,5 +95,5 @@
   <xacro:distal_sensor_gazebo_macro finger_number="3" sensor_number="2"/>
   <xacro:distal_sensor_gazebo_macro finger_number="3" sensor_number="3"/>
   <xacro:distal_sensor_gazebo_macro finger_number="3" sensor_number="4"/>
-  
+
 </robot>
