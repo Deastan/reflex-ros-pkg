@@ -4,6 +4,8 @@
     <!-- Launches the controllers according to the hardware interface selected -->
     <!-- Everythings is spawned under a namespace with the same name as the robot's. -->
     
+<!-- distal_joint_1_position_controller -->
+
     <arg name="controllers" 
         default="joint_state_controller 
             preshape_1_position_controller 

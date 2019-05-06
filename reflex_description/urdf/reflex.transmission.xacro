@@ -33,7 +33,6 @@
   </transmission>
 
 <!-- Proximal -->
-
   <transmission name="proximal_1_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="proximal_joint_1">
@@ -73,7 +72,7 @@
     <joint name="distal_joint_1">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="distal_1_motor">
+    <actuator name="proximal_1_motor">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>

@@ -1,46 +1,67 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(reflex_control)
 
-find_package(catkin REQUIRED)
-
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS
+  reflex
+  reflex_msgs2
   roscpp
-  rospy
   sensor_msgs
-  std_msgs
-  nav_msgs
-  control_msgs
-  tf
-  tf2
-  tf2_ros
-  tf2_msgs
-  message_generation
-  #Eigen3
-  #Eigen REQUIRED
+  urdf
+  visualization_msgs
+  gazebo_ros
+  std_msgs 
+  geometry_msgs
 )
 
+# Depend on system install of Gazebo
+find_package(gazebo REQUIRED)
+
+# Because GPU cluster says this package requires c++11 to build, not sure why.
+#   Builds fine without this on my laptop.
+set(CMAKE_CXX_FLAGS "-std=c++0x")
+
+###################################
+## catkin specific configuration ##
+###################################
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES rrbot_control
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
+  #  INCLUDE_DIRS include
+  #  LIBRARIES reflex_gazebo
+  CATKIN_DEPENDS roscpp  
+#  DEPENDS Boost
 )
 
-catkin_package(
-  #INCLUDE_DIRS include ${Eigen_INCLUDE_DIRS}
-  #INCLUDE_DIRS
-  #include
-#  LIBRARIES
-  CATKIN_DEPENDS
-    roscpp
-    sensor_msgs
-    geometry_msgs
-    control_msgs
-    visualization_msgs
-    std_msgs
-    std_srvs
-    nav_msgs
-    message_runtime
-#  DEPENDS #Eigen
-)
+#include_directories(
+#  ${catkin_INCLUDE_DIRS}
+#)
+
+###########
+## Build ##
+###########
+## Specify additional locations of header files
+## Your package locations should be listed before other locations
+include_directories(${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+link_directories(${GAZEBO_LIBRARY_DIRS})
+
+## Declare a cpp library
+#add_library(contact src/ContactPlugin.cpp)
+
+## Declare a cpp executable
+#add_executable(test_exec src/transmissionProximalToDistal.cpp)
+
+
+add_executable(test_exec src/transmissionProximalToDistal.cpp)
+target_link_libraries(test_exec ${catkin_LIBRARIES})
+#add_dependencies(test_exec beginner_tutorials_generate_messages_cpp)
+
+## Specify libraries to link a library or executable target against
+#target_link_libraries(contact ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+
+
+## Declare a cpp executable
+#add_executable(hand_visualizer2 src/hand_visualizer.cpp)
+#add_executable(reflex imu.py)
+
+## Specify libraries to link a library or executable target against
+#target_link_libraries(hand_visualizer2 ${catkin_LIBRARIES})
+#add_dependencies(hand_visualizer2 reflex_msgs2_gencpp)
