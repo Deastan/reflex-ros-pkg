@@ -8,6 +8,7 @@
 
  // Includes
 #include <string>
+#include <boost/thread.hpp>
 
 // Function
 #include <std_msgs/Float64.h>
@@ -16,20 +17,22 @@
 // ROS
 #include "ros/ros.h"
 
-
 // Variables initialization
 
 //Publishers
-ros::Publisher publisher_proximal_1;
-ros::Publisher publisher_proximal_2;
-ros::Publisher publisher_proximal_3;
+ros::Publisher& publisher_proximal_1;
+ros::Publisher& publisher_proximal_2;
+ros::Publisher& publisher_proximal_3;
 
 // Messages
-std_msgs::Float64 contact_message_proximal_1;
-std_msgs::Float64 contact_message_proximal_2;
-std_msgs::Float64 contact_message_proximal_3;
+std_msgs::Float64& contact_message_proximal_1;
+std_msgs::Float64& contact_message_proximal_2;
+std_msgs::Float64& contact_message_proximal_3;
 
 // Callback function
 void callback_proximal_1(const std_msgs::Float64& msg);
 void callback_proximal_2(const std_msgs::Float64& msg);
 void callback_proximal_3(const std_msgs::Float64& msg);
+
+// Non Lin. Function
+double function_nonLin(const std_msgs::Float64& msg);
