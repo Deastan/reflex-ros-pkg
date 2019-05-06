@@ -25,7 +25,6 @@
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="gui" value="$(arg gui)" />
-    <!-- more default parameters can be changed here -->
     </include>
 
     <!-- Spawn controllers - it uses a JointController -->
