@@ -27,7 +27,7 @@ set(CMAKE_CXX_FLAGS "-std=c++0x")
 catkin_package(
   #  INCLUDE_DIRS include
   #  LIBRARIES reflex_gazebo
-  CATKIN_DEPENDS roscpp gazebo_ros reflex_gazebo_msgs
+  CATKIN_DEPENDS roscpp gazebo_ros 
 #  DEPENDS Boost
 )
 

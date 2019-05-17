@@ -13,6 +13,8 @@
   <xacro:include filename="$(find reflex_description)/urdf/reflex.gazebo.xacro" />
   <xacro:include filename="$(find reflex_description)/materials/reflex.materials.xacro" />
   <xacro:include filename="$(find reflex_description)/urdf/tactile_sensors.xacro" />
+  <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.xacro"/>
+  <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.urdf.xacro"/>
 
 <!-- Properties -->
   <xacro:property name="flex_link_mass"     value="0.01"/>
@@ -94,11 +96,11 @@
   </link>
 
   <!-- For a tool on a arm, uncomment this part -->
-  <!-- <joint name="tool_joint" type="fixed">
+  <joint name="tool_joint" type="fixed">
       <parent link="iiwa_link_ee" />
       <child link = "base_link" />
       <origin xyz="0.0 0.0 0.0" rpy="0 0.0 3.14159" />  
-  </joint> -->
+  </joint>
 
   <link name="pad">
     <inertial>
@@ -143,6 +145,17 @@
     <axis
       xyz="0 0 0" />
   </joint>
+
+  <!-- Add the tool tips which is the pose of the hand effector -->
+  <!-- TODO Check the offset of the tool! -->
+  <joint name="tool_ee_joint" type="fixed">
+  <parent link="base_link" />
+  <child link = "tool_link_ee" />
+  <origin xyz="0 0 0.1275" rpy="0 ${0.0/1.0} 0" />   
+</joint>
+  
+<!--  The TCP frame is here defined -->
+<link name="tool_link_ee"/>
 
 <!-- *****************************************FINGER 1**************************************************** -->
 

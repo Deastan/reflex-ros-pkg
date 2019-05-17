@@ -43,16 +43,9 @@ catkin_package(
 include_directories(${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
 link_directories(${GAZEBO_LIBRARY_DIRS})
 
-## Declare a cpp library
-#add_library(contact src/ContactPlugin.cpp)
-
-## Declare a cpp executable
-#add_executable(test_exec src/transmissionProximalToDistal.cpp)
-
-
-add_executable(test_exec src/transmissionProximalToDistal.cpp)
-target_link_libraries(test_exec ${catkin_LIBRARIES})
-#add_dependencies(test_exec beginner_tutorials_generate_messages_cpp)
+add_executable(transmissionProximalToDistal_node src/transmissionProximalToDistal_node.cpp)
+target_link_libraries(transmissionProximalToDistal_node ${catkin_LIBRARIES})
+#add_dependencies(transmissionProximalToDistal_node beginner_tutorials_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 #target_link_libraries(contact ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})

@@ -24,13 +24,16 @@
     <rosparam file="$(find reflex_control)/config/reflex_control.yaml" command="load" />
     
     <!-- Loads the controllers -->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    <node name="controller_spawner_reflex" pkg="controller_manager" type="spawner" respawn="false"
           output="screen" ns="/$(arg namespace)" args="$(arg controllers) --shutdown-timeout 2" />
     
     <!-- Converts joint states to TF transforms for rviz, etc -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
           respawn="false" output="screen">
         <remap from="joint_states" to="/$(arg robot_name)/joint_states" />
+    </node>
+
+    <node name="transmissionProximalDistal" pkg="reflex_control" type="transmissionProximalToDistal_node" respawn="false" output="screen">
     </node>
     
 </launch>
