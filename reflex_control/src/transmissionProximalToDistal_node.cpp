@@ -16,13 +16,13 @@ int main(int argc, char **argv)
 
   ros::NodeHandle nh;
 
-  publisher_proximal_1 = nh.advertise <std_msgs::Float64>("/reflex_takktile_2/distal_joint_1_position_controller/command", 30);
-  publisher_proximal_2 = nh.advertise <std_msgs::Float64>("/reflex_takktile_2/distal_joint_2_position_controller/command", 30);
-  publisher_proximal_3 = nh.advertise <std_msgs::Float64>("/reflex_takktile_2/distal_joint_3_position_controller/command", 30);
+  publisher_proximal_1 = nh.advertise <std_msgs::Float64>("/iiwa/distal_joint_1_position_controller/command", 30);
+  publisher_proximal_2 = nh.advertise <std_msgs::Float64>("/iiwa/distal_joint_2_position_controller/command", 30);
+  publisher_proximal_3 = nh.advertise <std_msgs::Float64>("/iiwa/distal_joint_3_position_controller/command", 30);
 
-  ros::Subscriber sub_proximal_1 = nh.subscribe("/reflex_takktile_2/proximal_joint_1_position_controller/command", 30, callback_proximal_1);
-  ros::Subscriber sub_proximal_2 = nh.subscribe("/reflex_takktile_2/proximal_joint_2_position_controller/command", 30, callback_proximal_2);
-  ros::Subscriber sub_proximal_3 = nh.subscribe("/reflex_takktile_2/proximal_joint_3_position_controller/command", 30, callback_proximal_3);
+  ros::Subscriber sub_proximal_1 = nh.subscribe("/iiwa/proximal_joint_1_position_controller/command", 30, callback_proximal_1);
+  ros::Subscriber sub_proximal_2 = nh.subscribe("/iiwa/proximal_joint_2_position_controller/command", 30, callback_proximal_2);
+  ros::Subscriber sub_proximal_3 = nh.subscribe("/iiwa/proximal_joint_3_position_controller/command", 30, callback_proximal_3);
 
   ros::AsyncSpinner spinner(6);  // Use 4 threads
   spinner.start();
