@@ -1,5 +1,6 @@
-iiwa:
-#reflex_takktile_2:
+reflex_takktile_2:
+#iiwa:
+
 
   # Publish all joint states -----------------------------------
 

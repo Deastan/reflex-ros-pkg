@@ -22,6 +22,7 @@
     <arg name="model" default="takktile_2" />
     <!-- <arg name="namespace" default="$(arg robot_name)"/> -->
     <arg name="namespace" default="iiwa"/>
+    <arg name="namespace_iiwa" default="/"/>
     
     <!-- Loads joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find reflex_control)/config/reflex_control.yaml" command="load" />
@@ -34,14 +35,15 @@
     <!-- <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen" ns="$(arg robot_name)" >
     </node> -->
+    <!-- <group >
+       <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen"  >
+        </node>
+    </group> -->
 
-     <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
+     <!-- <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen" ns="$(arg namespace)" >
-    </node>
-
-    
-
-   
+    </node> -->
           <!-- "$(arg namespace)"> -->
           <!-- <remap from="joint_states" to="/$(arg namespace)/joint_states" /> -->
           <!-- <remap from="joint_states" to="/$(arg namespace)/joint_states/BIIIIM" /> -->
