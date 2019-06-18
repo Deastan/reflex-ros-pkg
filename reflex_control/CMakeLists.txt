@@ -45,7 +45,9 @@ link_directories(${GAZEBO_LIBRARY_DIRS})
 
 add_executable(transmissionProximalToDistal_node src/transmissionProximalToDistal_node.cpp)
 target_link_libraries(transmissionProximalToDistal_node ${catkin_LIBRARIES})
-#add_dependencies(transmissionProximalToDistal_node beginner_tutorials_generate_messages_cpp)
+
+add_executable(hand_controller src/hand_controller.cpp)
+target_link_libraries(hand_controller ${catkin_LIBRARIES})
 
 ## Specify libraries to link a library or executable target against
 #target_link_libraries(contact ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})

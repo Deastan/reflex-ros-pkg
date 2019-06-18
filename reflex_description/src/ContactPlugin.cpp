@@ -65,7 +65,7 @@ void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)
   // Make sure the parent sensor is active.
   this->parentSensor->SetActive(true);
 
-  name_sensor = "/iiwa/" + _sensor->GetName();
+  name_sensor = "/reflex_takktile_2/" + _sensor->GetName();
   std::cerr << name_sensor << std::endl;
   contact_publisher = nh.advertise <std_msgs::Bool>(name_sensor, 30);
 }

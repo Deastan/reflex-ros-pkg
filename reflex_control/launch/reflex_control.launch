@@ -53,5 +53,8 @@
 
     <node name="transmissionProximalDistal" pkg="reflex_control" type="transmissionProximalToDistal_node" respawn="false" output="screen" ns="$(arg namespace)">
     </node>
+
+    <node name="hand_controller" pkg="reflex_control" type="hand_controller" respawn="false" output="screen" ns="$(arg namespace)">
+    </node>
     
 </launch>
