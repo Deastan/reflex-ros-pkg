@@ -33,7 +33,7 @@ void callback_close_hand(const std_msgs::Bool& msg)
 { 
   if(msg.data == true)
   {
-    float proximal_angle = 1.57;
+    float proximal_angle = 1.3;
 
     message_proximal_1.data = proximal_angle;
     message_proximal_2.data = proximal_angle;

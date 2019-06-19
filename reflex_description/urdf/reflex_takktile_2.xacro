@@ -28,20 +28,20 @@
 
 <!-- Parameters Limits Joints -->
   <!-- Preshape -->
-  <xacro:property name="preshape_joint_limit_effort"     value="1.0"/>
-  <xacro:property name="preshape_joint_limit_velocity"   value="1.0"/>
+  <xacro:property name="preshape_joint_limit_effort"     value="2.0"/>
+  <xacro:property name="preshape_joint_limit_velocity"   value="0.5"/>
   <xacro:property name="preshape_joint_limit_lower"      value="-0.0872665"/>
   <xacro:property name="preshape_joint_limit_upper"      value="2.09440"/>
   
   <!-- Proximal -->
-  <xacro:property name="proximal_joint_limit_effort"     value="1.0"/>
-  <xacro:property name="proximal_joint_limit_velocity"   value="1.0"/>
+  <xacro:property name="proximal_joint_limit_effort"     value="2.0"/>
+  <xacro:property name="proximal_joint_limit_velocity"   value="0.5"/>
   <xacro:property name="proximal_joint_limit_lower"      value="0.0"/>
   <xacro:property name="proximal_joint_limit_upper"      value="2.09440"/>
 
   <!-- Distal -->
-  <xacro:property name="distal_joint_limit_effort"     value="1.0"/>
-  <xacro:property name="distal_joint_limit_velocity"   value="1.0"/>
+  <xacro:property name="distal_joint_limit_effort"     value="2.0"/>
+  <xacro:property name="distal_joint_limit_velocity"   value="0.5"/>
   <xacro:property name="distal_joint_limit_lower"      value="0.0"/>
   <xacro:property name="distal_joint_limit_upper"      value="1.8"/>
   

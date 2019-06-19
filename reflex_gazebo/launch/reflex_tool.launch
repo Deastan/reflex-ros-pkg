@@ -28,5 +28,6 @@
         <arg name="model" default="$(arg model)" />
         <arg name="namespace" default="$(arg namespace)"/>
     </include>
+    
 
 </launch>
