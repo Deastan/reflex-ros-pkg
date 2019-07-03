@@ -6,8 +6,9 @@
           - Create the macro of simplifying creation of the repetitive part
    -->
 
-<robot name="reflex_takktile_2" xmlns:xacro="http://ros.org/wiki/xacro">
-<!-- Incudes -->
+<robot name="reflex_takktile_2" 
+  xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Incudes -->
   <!-- <xacro:include filename="$(find reflex_description)/urdf/reflex_takktile_2.xacro" />   -->
   <xacro:include filename="$(find reflex_description)/urdf/reflex.transmission.xacro" />
   <xacro:include filename="$(find reflex_description)/urdf/reflex.gazebo.xacro" />
@@ -16,38 +17,38 @@
   <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.xacro"/>
   <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.urdf.xacro"/>
 
-<!-- Properties -->
-  <xacro:property name="flex_link_mass"     value="0.01"/>
+  <!-- Properties -->
+  <xacro:property name="flex_link_mass" value="0.01"/>
   <xacro:property name="proximal_link_mass" value="0.01"/>
-  <xacro:property name="distal_link_mass"   value="0.01"/>
-  <xacro:property name="proximal_pad_mass"  value="0.01"/>
-  <xacro:property name="distal_pad_mass"    value="0.01"/>
-  <xacro:property name="swivel_link_mass"   value="0.01"/>
-  <xacro:property name="base_link_mass"     value="0.74"/>
-  <xacro:property name="pad_mass"           value="0.1"/>
+  <xacro:property name="distal_link_mass" value="0.01"/>
+  <xacro:property name="proximal_pad_mass" value="0.01"/>
+  <xacro:property name="distal_pad_mass" value="0.01"/>
+  <xacro:property name="swivel_link_mass" value="0.01"/>
+  <xacro:property name="base_link_mass" value="0.34"/><!-- 0.74 -->
+  <xacro:property name="pad_mass" value="0.1"/>
 
-<!-- Parameters Limits Joints -->
+  <!-- Parameters Limits Joints -->
   <!-- Preshape -->
-  <xacro:property name="preshape_joint_limit_effort"     value="2.0"/>
-  <xacro:property name="preshape_joint_limit_velocity"   value="0.5"/>
-  <xacro:property name="preshape_joint_limit_lower"      value="-0.0872665"/>
-  <xacro:property name="preshape_joint_limit_upper"      value="2.09440"/>
-  
+  <xacro:property name="preshape_joint_limit_effort" value="0.50"/>
+  <xacro:property name="preshape_joint_limit_velocity" value="0.5"/>
+  <xacro:property name="preshape_joint_limit_lower" value="-0.00"/>
+  <xacro:property name="preshape_joint_limit_upper" value="1.65"/>
+
   <!-- Proximal -->
-  <xacro:property name="proximal_joint_limit_effort"     value="2.0"/>
-  <xacro:property name="proximal_joint_limit_velocity"   value="0.5"/>
-  <xacro:property name="proximal_joint_limit_lower"      value="0.0"/>
-  <xacro:property name="proximal_joint_limit_upper"      value="2.09440"/>
+  <xacro:property name="proximal_joint_limit_effort" value="0.50"/>
+  <xacro:property name="proximal_joint_limit_velocity" value="0.5"/>
+  <xacro:property name="proximal_joint_limit_lower" value="0.0"/>
+  <xacro:property name="proximal_joint_limit_upper" value="2.09440"/>
 
   <!-- Distal -->
-  <xacro:property name="distal_joint_limit_effort"     value="2.0"/>
-  <xacro:property name="distal_joint_limit_velocity"   value="0.5"/>
-  <xacro:property name="distal_joint_limit_lower"      value="0.0"/>
-  <xacro:property name="distal_joint_limit_upper"      value="1.8"/>
-  
-<!-- ################ ################ ################ ################ ################ ################ -->
-<!-- ################ XACRO PORTION OF THE URDF, FOR MAKING THE FLEXIBLE JOINTS ################ -->
-<!-- ################ ################ ################ ################ ################ ################ -->
+  <xacro:property name="distal_joint_limit_effort" value="0.50"/>
+  <xacro:property name="distal_joint_limit_velocity" value="0.5"/>
+  <xacro:property name="distal_joint_limit_lower" value="0.0"/>
+  <xacro:property name="distal_joint_limit_upper" value="1.7"/>
+
+  <!-- ################ ################ ################ ################ ################ ################ -->
+  <!-- ################ XACRO PORTION OF THE URDF, FOR MAKING THE FLEXIBLE JOINTS ################ -->
+  <!-- ################ ################ ################ ################ ################ ################ -->
 
   <xacro:property name="flex_length" value="0.016" />
   <xacro:property name="distal_length" value="0.050" />
@@ -55,11 +56,11 @@
   <xacro:property name="prox_length" value="0.060" />
   <xacro:property name="pi" value="3.1415" />
 
-<!-- ################ ################ ################ ################ ################ ################ -->
-<!-- ################ THE SECTION CREATED BY SOLIDWORKS EXPORTER, CUT AND PASTE THIS IN HERE ################ -->
-<!-- ################ YOU CAN ALTER THE COLORS FROM HERE ################ -->
-<!-- ################ COMMENT OUT ALL dist*_joint PIECES OF THIS URDF SO THE FLEX JOINTS CAN LINK UP ################ -->
-<!-- ################ ################ ################ ################ ################ ################ -->
+  <!-- ################ ################ ################ ################ ################ ################ -->
+  <!-- ################ THE SECTION CREATED BY SOLIDWORKS EXPORTER, CUT AND PASTE THIS IN HERE ################ -->
+  <!-- ################ YOU CAN ALTER THE COLORS FROM HERE ################ -->
+  <!-- ################ COMMENT OUT ALL dist*_joint PIECES OF THIS URDF SO THE FLEX JOINTS CAN LINK UP ################ -->
+  <!-- ################ ################ ################ ################ ################ ################ -->
 
   <link name="base_link">
     <inertial>
@@ -67,39 +68,35 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="${base_link_mass}"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <!-- TODO: Change the BASE OF the hand to the version 2 -->
     <visual>
-      <origin
-        xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/base_link.STL" />
+        <!-- <mesh filename="$(find reflex_description)/meshes/base_link.stl" /> -->
+         <mesh filename="package://reflex_description/meshes/base_link.stl" />
+         <!-- <mesh filename="package://iiwa_description/meshes/iiwa7/visual/link_0.stl"/> -->
       </geometry>
-      <material
-        name="base_color">
+      <!-- <material name="base_color">
         <xacro:base_color/>
-      </material>
+      </material> -->
     </visual>
     <!-- TODO: Change the BASE OF the hand to the version 2 -->
     <collision>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/base_link.STL" />
+        <mesh filename="package://reflex_description/meshes/base_link.stl" />
       </geometry>
     </collision>
   </link>
 
   <!-- For a tool on a arm, uncomment this part -->
   <joint name="tool_joint" type="fixed">
-      <parent link="iiwa_link_ee" />
-      <child link = "base_link" />
-      <origin xyz="0.0 0.0 0.0" rpy="0 0.0 3.14159" />  
+    <parent link="iiwa_link_ee" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0.0 3.14159" />
   </joint>
 
   <link name="pad">
@@ -108,61 +105,48 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.1"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/pad.STL" />
+        <mesh filename="package://reflex_description/meshes/pad.stl" />
       </geometry>
-      <material
-        name="">
-        <xacro:pad_color/>
-      </material>
+      <!-- <material name="">
+        <xacro:pad/>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/pad.STL" />
+        <mesh filename="package://reflex_description/meshes/pad.stl" />
       </geometry>
     </collision>
   </link>
-  
+
   <joint name="pad_joint" type="fixed">
-    <origin
-      xyz="0.02 0 0.063"
-      rpy="1.5707963267949 5.55111512312578E-17 -1.5707963267949" />
-    <parent
-      link="base_link" />
-    <child
-      link="pad" />
-    <axis
-      xyz="0 0 0" />
+    <origin xyz="0.02 0 0.063" rpy="1.5707963267949 5.55111512312578E-17 -1.5707963267949" />
+    <parent link="base_link" />
+    <child link="pad" />
+    <axis xyz="0 0 0" />
   </joint>
 
   <!-- Add the tool tips which is the pose of the hand effector -->
   <!-- TODO Check the offset of the tool! -->
   <joint name="tool_ee_joint" type="fixed">
-  <parent link="base_link" />
-  <child link = "tool_link_ee" />
-  <origin xyz="0 0 0.1275" rpy="0 ${0.0/1.0} 0" />   
-</joint>
-  
-<!--  The TCP frame is here defined -->
-<link name="tool_link_ee">
-  <!-- <inertial>
+    <parent link="base_link" />
+    <child link = "tool_link_ee" />
+    <origin xyz="0 0 0.1275" rpy="0 ${0.0/1.0} 0" />
+  </joint>
+
+  <!--  The TCP frame is here defined -->
+  <link name="tool_link_ee">
+    <!-- <inertial>
     <origin xyz="0.0 0.0 0.0"/>
     <mass value="0.0001"/>
-    <inertia
-      ixx="0.0001" ixy="0.0" ixz="0.0"
-                        iyy="0.0001"  iyz="0.0"
-                                          izz="0.0001"/>
+    <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
   </inertial>
 
   <visual>
@@ -170,8 +154,7 @@
     <geometry>
      <cylinder length="${length}" radius="${radius}"/>
     </geometry>
-    <material
-      name="">
+    <material name="">
       <xacro:pad_color/>
     </material>
   </visual>
@@ -182,10 +165,10 @@
       <cylinder length="${length}" radius="${radius}"/>
     </geometry>
   </collision> -->
-</link>
+  </link>
 
 
-<!-- *****************************************FINGER 1**************************************************** -->
+  <!-- *****************************************FINGER 1**************************************************** -->
 
   <link name="swivel_1">
     <inertial>
@@ -193,132 +176,105 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/swivel_1.STL" />
+        <mesh filename="package://reflex_description/meshes/swivel_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:swivel_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/swivel_1.STL" />
+        <mesh filename="package://reflex_description/meshes/swivel_1.stl" />
       </geometry>
     </collision>
   </link>
-  
+
   <joint name="preshape_1" type="revolute">
-    <origin
-      xyz="0.0503973683071414 -0.026 0.063"
-      rpy="6.75550818663469E-16 1.97993848419069E-16 -2.77555756156289E-16" />
+    <origin xyz="0.0503973683071414 -0.026 0.063" rpy="6.75550818663469E-16 1.97993848419069E-16 -2.77555756156289E-16" />
     <parent link="base_link" />
     <child link="swivel_1" />
     <axis xyz="0 0 -1" />
     <!-- <limit effort="30" velocity="1.0" lower="-0.0872665" upper="2.0944" /> -->
-    <limit effort="${preshape_joint_limit_effort}" 
-            velocity="${preshape_joint_limit_velocity}" 
-            lower="${preshape_joint_limit_lower}" 
-            upper="${preshape_joint_limit_upper}" />
+    <limit effort="${preshape_joint_limit_effort}" velocity="${preshape_joint_limit_velocity}" lower="${preshape_joint_limit_lower}" upper="${preshape_joint_limit_upper}" />
   </joint>
-  
+
   <link name="proximal_1">
     <inertial>
       <!-- TODO: CALCULATES CENTER OF MASS -->
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/proximal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:proximal_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/proximal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_1.stl" />
       </geometry>
     </collision>
   </link>
-  
+
   <joint name="proximal_joint_1" type="revolute">
-    <origin
-      xyz="0.01 0 0.0186"
-      rpy="-6.20039667432211E-16 0.05 2.22044604925031E-16" />
+    <origin xyz="0.01 0 0.0186" rpy="-6.20039667432211E-16 0.05 2.22044604925031E-16" />
     <parent link="swivel_1" />
     <child link="proximal_1" />
     <axis xyz="0 -1 0" />
-    <limit effort="${proximal_joint_limit_effort}" 
-            velocity="${proximal_joint_limit_velocity}" 
-            lower="${proximal_joint_limit_lower}" 
-            upper="${proximal_joint_limit_upper}" />
+    <limit effort="${proximal_joint_limit_effort}" velocity="${proximal_joint_limit_velocity}" lower="${proximal_joint_limit_lower}" upper="${proximal_joint_limit_upper}" />
   </joint>
-  
+
   <link name="proximal_pad_1">
     <inertial>
       <!-- TODO: CALCULATES CENTER OF MASS -->
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
-    
+
     <visual>
-      <origin
-        xyz="-0.008 0.014 -0.002"
-        rpy="1.5708 1.5708 0" />
+      <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:pad_color/>
-      </material>
+      </material> -->
     </visual>
 
     <!-- Keep for souvenir -->
     <!-- <collision name="proximal_pad_1_collision">
       <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.stl" />
       </geometry>
     </collision> -->
     <collision>
       <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.stl" />
       </geometry>
     </collision>
   </link>
-  
+
   <joint name="prox1_pad_joint" type="fixed">
     <origin xyz="0 0 0" rpy="1.5707963267949 0 -1.5707963267949" />
     <parent link="proximal_1" />
@@ -327,35 +283,31 @@
   </joint>
 
   <link name="flex_link_1">
-     <inertial>
+    <inertial>
       <!-- TODO: CALCULATES CENTER OF MASS -->
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
-        <!-- <origin xyz="${flex_length/2.0} -0.008 0.001" rpy="${pi/2} 0 ${pi/2}" /> -->
-        <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
-        <geometry>
-          <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
-          <box size="${flex_length*1.0} 0.014 0.006"/>
-        </geometry>
-        <material
-          name="">
+      <!-- <origin xyz="${flex_length/2.0} -0.008 0.001" rpy="${pi/2} 0 ${pi/2}" /> -->
+      <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <!-- <mesh filename="package://reflex_description/meshes/flex_block.stl" /> -->
+        <box size="${flex_length*1.0} 0.014 0.006"/>
+      </geometry>
+      <!-- <material name="">
           <xacro:flex_color/>
-        </material>
-      </visual>
-    
+        </material> -->
+    </visual>
+
     <collision>
       <!-- <origin xyz="${flex_length/2.0} -0.008 0.001" rpy="${pi/2} 0 ${pi/2}" /> -->
       <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
+        <!-- <mesh filename="package://reflex_description/meshes/flex_block.stl" /> -->
         <box size="${flex_length*1.0} 0.014 0.006"/>
       </geometry>
     </collision>
@@ -368,8 +320,8 @@
     <!-- <origin xyz="0.060 0 0.003"/>
     <axis xyz="0 -1 0"/> -->
     <origin xyz="${prox_length} 0 ${0.001}" />
-      <axis xyz="0 -1 0"/>
-  </joint> 
+    <axis xyz="0 -1 0"/>
+  </joint>
 
   <link name="distal_1">
     <inertial>
@@ -377,10 +329,7 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
@@ -388,56 +337,46 @@
       <origin xyz="-0.077 0.007 0.007" rpy="3.1459 0 0" />
       <!-- <origin xyz="0.0 0.0 0.0" rpy="3.1459 0 0" /> -->
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/distal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:distal_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="-0.077 0.007 0.007" rpy="3.1459 0 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/distal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_1.stl" />
       </geometry>
     </collision>
   </link>
-  
-  <joint name="distal_joint_1"  type="revolute">
+
+  <joint name="distal_joint_1" type="revolute">
     <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
     <parent link="flex_link_1" />
     <child link="distal_1" />
     <axis xyz="0 -1 0" />
-    <limit effort="${distal_joint_limit_effort}" 
-            velocity="${distal_joint_limit_velocity}" 
-            lower="${distal_joint_limit_lower}" 
-            upper="${distal_joint_limit_upper}" />
+    <limit effort="${distal_joint_limit_effort}" velocity="${distal_joint_limit_velocity}" lower="${distal_joint_limit_lower}" upper="${distal_joint_limit_upper}" />
   </joint>
-  
+
   <link name="distal_pad_1">
     <inertial>
-   
+
       <origin xyz="0.0 0.0 0.0"/>
-      
+
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/distal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:pad_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
@@ -457,11 +396,11 @@
       </surface> -->
       <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/distal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.stl" />
       </geometry>
     </collision>
   </link>
-  
+
   <joint name="dist1_pad_joint" type="fixed">
     <origin xyz="-0.01 0 0.001" rpy="1.5707963267949 0 -1.5707963267949" />
     <parent link="distal_1" />
@@ -469,7 +408,7 @@
     <axis xyz="0 0 0" />
   </joint>
 
-<!-- *****************************************FINGER 2**************************************************** -->
+  <!-- *****************************************FINGER 2**************************************************** -->
 
   <link name="swivel_2">
     <inertial>
@@ -477,91 +416,69 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/swivel_2.STL" />
+        <mesh filename="package://reflex_description/meshes/swivel_2.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:swivel_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/swivel_2.STL" />
+        <mesh filename="package://reflex_description/meshes/swivel_2.stl" />
       </geometry>
     </collision>
   </link>
-  
+
   <joint name="preshape_2" type="revolute">
-    <origin
-      xyz="0.0503973683071413 0.0259999999999999 0.063"
-      rpy="1.22459340959228E-15 -7.33448407631817E-16 -1.66533453693773E-16" />
+    <origin xyz="0.0503973683071413 0.0259999999999999 0.063" rpy="1.22459340959228E-15 -7.33448407631817E-16 -1.66533453693773E-16" />
     <parent link="base_link" />
     <child link="swivel_2" />
     <axis xyz="0 0 -1" />
     <!-- <limit effort="30" velocity="1.0" lower="-0.0872665" upper="2.0944" /> -->
-    <limit effort="${preshape_joint_limit_effort}" 
-            velocity="${preshape_joint_limit_velocity}" 
-            lower="${preshape_joint_limit_lower}" 
-            upper="${preshape_joint_limit_upper}" />
+    <limit effort="${preshape_joint_limit_effort}" velocity="${preshape_joint_limit_velocity}" lower="${-preshape_joint_limit_upper}" upper="${-preshape_joint_limit_lower}" />
   </joint>
-  
+
   <link name="proximal_2">
     <inertial>
       <!-- TODO: CALCULATES CENTER OF MASS -->
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/proximal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:proximal_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
       <geometry>
-        <mesh filename="package://reflex_description/meshes/proximal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_1.stl" />
       </geometry>
     </collision>
   </link>
 
   <joint name="proximal_joint_2" type="revolute">
-    <origin
-      xyz="0.01 0 0.0186"
-      rpy="-1.16908225836102E-15 0.05 1.11022302462515E-16" />
+    <origin xyz="0.01 0 0.0186" rpy="-1.16908225836102E-15 0.05 1.11022302462515E-16" />
     <parent link="swivel_2" />
     <child link="proximal_2" />
     <axis xyz="0 -1 0" />
-    <limit effort="${proximal_joint_limit_effort}" 
-            velocity="${proximal_joint_limit_velocity}" 
-            lower="${proximal_joint_limit_lower}" 
-            upper="${proximal_joint_limit_upper}" />
+    <limit effort="${proximal_joint_limit_effort}" velocity="${proximal_joint_limit_velocity}" lower="${proximal_joint_limit_lower}" upper="${proximal_joint_limit_upper}" />
   </joint>
 
   <link name="proximal_pad_2">
@@ -570,72 +487,58 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:pad_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.stl" />
       </geometry>
     </collision>
   </link>
 
   <joint name="prox2_pad_joint" type="fixed">
-    <origin
-      xyz="0 0 0"
-      rpy="1.5707963267949 0 -1.5707963267949" />
-    <parent
-      link="proximal_2" />
-    <child
-      link="proximal_pad_2" />
-    <axis
-      xyz="0 0 0" />
+    <origin xyz="0 0 0" rpy="1.5707963267949 0 -1.5707963267949" />
+    <parent link="proximal_2" />
+    <child link="proximal_pad_2" />
+    <axis xyz="0 0 0" />
   </joint>
 
   <link name="flex_link_2">
-     <inertial>
+    <inertial>
       <!-- TODO: CALCULATES CENTER OF MASS -->
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
-        <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
-        <geometry>
-          <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
-          <box size="${flex_length*1.0} 0.014 0.006"/>
-        </geometry>
-        <material
-          name="">
+      <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <!-- <mesh filename="package://reflex_description/meshes/flex_block.stl" /> -->
+        <box size="${flex_length*1.0} 0.014 0.006"/>
+      </geometry>
+      <!-- <material name="">
           <xacro:flex_color/>
-        </material>
-      </visual>
-    
+        </material> -->
+    </visual>
+
     <collision>
       <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
+        <!-- <mesh filename="package://reflex_description/meshes/flex_block.stl" /> -->
         <box size="${flex_length*1.0} 0.014 0.006"/>
       </geometry>
     </collision>
@@ -648,7 +551,7 @@
     <!-- <origin xyz="0.060 0 0.003"/>
     <axis xyz="0 -1 0"/> -->
     <origin xyz="${prox_length} 0 ${0.001}" />
-      <axis xyz="0 -1 0"/>
+    <axis xyz="0 -1 0"/>
   </joint>
 
   <link name="distal_2">
@@ -657,28 +560,23 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.077 0.007 0.006" rpy="3.1459 0 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/distal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:distal_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="-0.077 0.007 0.006" rpy="3.1459 0 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/distal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_1.stl" />
         <!-- <box size="${flex_length*1.0} 0.014 0.006"/> -->
       </geometry>
     </collision>
@@ -686,14 +584,10 @@
 
   <joint name="distal_joint_2" type="revolute">
     <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
-    <parent
-      link="flex_link_2" />
+    <parent link="flex_link_2" />
     <child link="distal_2" />
     <axis xyz="0 -1 0" />
-      <limit effort="${distal_joint_limit_effort}" 
-            velocity="${distal_joint_limit_velocity}" 
-            lower="${distal_joint_limit_lower}" 
-            upper="${distal_joint_limit_upper}" />
+    <limit effort="${distal_joint_limit_effort}" velocity="${distal_joint_limit_velocity}" lower="${distal_joint_limit_lower}" upper="${distal_joint_limit_upper}" />
   </joint>
 
   <link name="distal_pad_2">
@@ -702,21 +596,17 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/distal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:pad_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
@@ -737,24 +627,19 @@
       </surface> -->
       <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/distal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.stl" />
       </geometry>
     </collision>
   </link>
 
   <joint name="dist2_pad_joint" type="fixed">
-    <origin
-      xyz="-0.01 0 0.001"
-      rpy="1.5707963267949 0 -1.5707963267949" />
-    <parent
-      link="distal_2" />
-    <child
-      link="distal_pad_2" />
-    <axis
-      xyz="0 0 0" />
+    <origin xyz="-0.01 0 0.001" rpy="1.5707963267949 0 -1.5707963267949" />
+    <parent link="distal_2" />
+    <child link="distal_pad_2" />
+    <axis xyz="0 0 0" />
   </joint>
 
-<!-- *****************************************FINGER 3**************************************************** -->
+  <!-- *****************************************FINGER 3**************************************************** -->
 
   <link name="proximal_3">
     <inertial>
@@ -762,43 +647,33 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/proximal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:proximal_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="-0.011 0.007 0.011" rpy="3.1459 0 0"/>
       <geometry>
-        <mesh filename="package://reflex_description/meshes/proximal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_1.stl" />
       </geometry>
     </collision>
   </link>
 
   <joint name="proximal_joint_3" type="revolute">
-    <origin
-      xyz="-0.0299999999999996 0 0.0816000000000002"
-      rpy="-5.55111512312578E-17 0.05 3.14159265358979" />
+    <origin xyz="-0.0299999999999996 0 0.0816000000000002" rpy="-5.55111512312578E-17 0.05 3.14159265358979" />
     <parent link="base_link" />
     <child link="proximal_3" />
     <axis xyz="0 -1 0" />
-    <limit effort="${proximal_joint_limit_effort}" 
-            velocity="${proximal_joint_limit_velocity}" 
-            lower="${proximal_joint_limit_lower}" 
-            upper="${proximal_joint_limit_upper}" />
+    <limit effort="${proximal_joint_limit_effort}" velocity="${proximal_joint_limit_velocity}" lower="${proximal_joint_limit_lower}" upper="${proximal_joint_limit_upper}" />
   </joint>
 
   <link name="proximal_pad_3">
@@ -807,72 +682,58 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:pad_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.stl" />
       </geometry>
     </collision>
   </link>
 
   <joint name="prox3_pad_joint" type="fixed">
-    <origin
-      xyz="0 0 0"
-      rpy="1.5707963267949 1.22460635382238E-16 -1.5707963267949" />
-    <parent
-      link="proximal_3" />
-    <child
-      link="proximal_pad_3" />
-    <axis
-      xyz="0 0 0" />
+    <origin xyz="0 0 0" rpy="1.5707963267949 1.22460635382238E-16 -1.5707963267949" />
+    <parent link="proximal_3" />
+    <child link="proximal_pad_3" />
+    <axis xyz="0 0 0" />
   </joint>
 
   <link name="flex_link_3">
-     <inertial>
+    <inertial>
       <!-- TODO: CALCULATES CENTER OF MASS -->
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
-        <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
-        <geometry>
-          <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
-          <box size="${flex_length*1.0} 0.014 0.006"/>
-        </geometry>
-        <material
-          name="">
+      <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <!-- <mesh filename="package://reflex_description/meshes/flex_block.stl" /> -->
+        <box size="${flex_length*1.0} 0.014 0.006"/>
+      </geometry>
+      <!-- <material name="">
           <xacro:flex_color/>
-        </material>
-      </visual>
-    
+        </material> -->
+    </visual>
+
     <collision>
       <origin xyz="${flex_length/2.0} 0.0 0.0" rpy="0.0 0.0 0.0" />
       <geometry>
-        <!-- <mesh filename="package://reflex_description/meshes/flex_block.STL" /> -->
+        <!-- <mesh filename="package://reflex_description/meshes/flex_block.stl" /> -->
         <box size="${flex_length*1.0} 0.014 0.006"/>
       </geometry>
     </collision>
@@ -885,7 +746,7 @@
     <!-- <origin xyz="0.060 0 0.003"/>
     <axis xyz="0 -1 0"/> -->
     <origin xyz="${prox_length} 0 ${0.001}" />
-      <axis xyz="0 -1 0"/>
+    <axis xyz="0 -1 0"/>
   </joint>
 
   <link name="distal_3">
@@ -894,42 +755,33 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.077 0.007 0.006" rpy="3.1459 0 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/distal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:distal_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
       <origin xyz="-0.077 0.007 0.006" rpy="3.1459 0 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/distal_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_1.stl" />
       </geometry>
     </collision>
   </link>
 
   <joint name="distal_joint_3" type="revolute">
     <origin xyz="${flex_length-0.01} 0 0.001" rpy="0 0 0" />
-    <parent
-      link="flex_link_3" />
+    <parent link="flex_link_3" />
     <child link="distal_3" />
     <axis xyz="0 -1 0" />
-      <limit effort="${distal_joint_limit_effort}" 
-            velocity="${distal_joint_limit_velocity}" 
-            lower="${distal_joint_limit_lower}" 
-            upper="${distal_joint_limit_upper}" />
+    <limit effort="${distal_joint_limit_effort}" velocity="${distal_joint_limit_velocity}" lower="${distal_joint_limit_lower}" upper="${distal_joint_limit_upper}" />
   </joint>
 
   <link name="distal_pad_3">
@@ -938,22 +790,17 @@
       <origin xyz="0.0 0.0 0.0"/>
       <!-- TODO: CALCULATES THE MASS AND INERTIAs -->
       <mass value="0.01"/>
-      <inertia
-        ixx="0.0001"  ixy="0.0"     ixz="0.0"
-                      iyy="0.0001"  iyz="0.0"
-                                    izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
 
     <visual>
       <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh
-          filename="package://reflex_description/meshes/distal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.stl" />
       </geometry>
-      <material
-        name="">
+      <!-- <material name="">
         <xacro:pad_color/>
-      </material>
+      </material> -->
     </visual>
 
     <collision>
@@ -973,44 +820,34 @@
       </surface> -->
       <origin xyz="-0.00825 0.009 0.057" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/distal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/distal_pad_1.stl" />
       </geometry>
     </collision>
   </link>
 
   <joint name="dist3_pad_joint" type="fixed">
-    <origin
-      xyz="-0.01 0 0.001"
-      rpy="1.5707963267949 0 -1.5707963267949" />
-    <parent
-      link="distal_3" />
-    <child
-      link="distal_pad_3" />
-    <axis
-      xyz="0 0 0" />
+    <origin xyz="-0.01 0 0.001" rpy="1.5707963267949 0 -1.5707963267949" />
+    <parent link="distal_3" />
+    <child link="distal_pad_3" />
+    <axis xyz="0 0 0" />
   </joint>
 
-<!-- ******************************************************************************************************* -->
-<!-- Objects to drop -->
-<!-- ******************************************************************************************************* -->
+  <!-- ******************************************************************************************************* -->
+  <!-- Objects to drop -->
+  <!-- ******************************************************************************************************* -->
 
   <!-- <link name="square">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
       <mass value="0.5"/>
-      <inertia
-        ixx="0.0001" ixy="0.0" ixz="0.0"
-                         iyy="0.0001"  iyz="0.0"
-                                           izz="0.0001"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial>
     <visual>
-      <origin
-        xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <box size="0.05 0.05 0.05"/>
       </geometry>
-      <material
-        name="base_color">
+      <material name="base_color">
         <xacro:base_color/>
       </material>
     </visual>
@@ -1022,10 +859,10 @@
     </collision>
   </link> -->
 
-<!-- ################ ################ ################ ################ ################ ################ -->
-<!-- ################ THIS SECTION LINKS THE MARKERS (TACTILE DATA) TO THE CAD MESH ################ -->
-<!-- ################ COPY AND PASTE THIS FROM urdf/homemade_marker_portion_urdf  ################ -->
-<!-- ################ ################ ################ ################ ################ ################ -->
+  <!-- ################ ################ ################ ################ ################ ################ -->
+  <!-- ################ THIS SECTION LINKS THE MARKERS (TACTILE DATA) TO THE CAD MESH ################ -->
+  <!-- ################ COPY AND PASTE THIS FROM urdf/homemade_marker_portion_urdf  ################ -->
+  <!-- ################ ################ ################ ################ ################ ################ -->
 
   <!-- <joint name="base_tactile_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -1088,17 +925,14 @@
   <!-- <collision name="proximal_pad_1_collision">
       <origin xyz="-0.008 0.014 -0.002" rpy="1.5708 1.5708 0" />
       <geometry>
-        <mesh filename="package://reflex_description/meshes/proximal_pad_1.STL" />
+        <mesh filename="package://reflex_description/meshes/proximal_pad_1.stl" />
       </geometry>
     </collision> -->
 
   <!-- <link name="proximal_1_sensor_1"> 
     <inertial>
       <mass value="0.00001"/>
-      <inertia
-        ixx="0.00000000001" ixy="0.0" ixz="0.0"
-                        iyy="0.00000000001"  iyz="0.0"
-                                          izz="0.00000000001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
     </inertial>
 
     <visual>

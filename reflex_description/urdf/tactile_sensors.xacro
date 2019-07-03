@@ -18,6 +18,13 @@
     <xacro:property name="number_separation_distal"   value="5.0"/>
 
 
+    <xacro:property name="flex_length" value="0.016" />
+    <xacro:property name="distal_length" value="0.050" />
+    <xacro:property name="num_steps" value="9" />
+    <xacro:property name="prox_length" value="0.060" />
+    <xacro:property name="pi" value="3.1415" />
+
+
     <!-- Sensors parameters -->
     <xacro:property name="radius"   value="0.003"/>
     <xacro:property name="length"   value="0.001"/>
@@ -38,10 +45,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="proximal_${finger_number}_sensor_1_collision">
@@ -74,10 +81,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="proximal_${finger_number}_sensor_2_collision">
@@ -110,10 +117,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="proximal_${finger_number}_sensor_3_collision">
@@ -146,10 +153,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="proximal_${finger_number}_sensor_4_collision">
@@ -182,10 +189,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="proximal_${finger_number}_sensor_5_collision">
@@ -220,10 +227,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="distal_${finger_number}_sensor_1_collision">
@@ -256,10 +263,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="distal_${finger_number}_sensor_2_collision">
@@ -292,10 +299,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="distal_${finger_number}_sensor_3_collision">
@@ -328,10 +335,10 @@
             <geometry>
                 <cylinder length="${length}" radius="${radius}"/>
             </geometry>
-            <material
+            <!-- <material
                 name="">
                 <xacro:pad_color/>
-            </material>
+            </material> -->
             </visual>
 
             <collision name="distal_${finger_number}_sensor_4_collision">

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="hardware_interface" default="PositionJointInterface"/>
+    <!-- <arg name="controllers" default="joint_state_controller pos_joint_trajectory_controller"/> -->
+    <!-- <arg name="robot_name" default="iiwa" /> -->
+    <!-- Launches the controllers according to the hardware interface selected -->
+    <!-- Everythings is spawned under a namespace with the same name as the robot's. -->
+    
+<!-- distal_joint_1_position_controller -->
+
+    <arg name="controllers" 
+        default="joint_state_controller 
+            preshape_1_position_controller 
+            preshape_2_position_controller
+            proximal_joint_1_position_controller 
+            proximal_joint_2_position_controller 
+            proximal_joint_3_position_controller
+            distal_joint_1_position_controller
+            distal_joint_2_position_controller
+            distal_joint_3_position_controller"/>
+    <arg name="robot_name" default="reflex_takktile_2" />
+    <arg name="model" default="takktile_2" />
+    <!-- <arg name="namespace" default="$(arg robot_name)"/> -->
+    <arg name="namespace" default="reflex_takktile_2"/>
+    
+    <!-- Loads joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find reflex_control)/config/reflex_control.yaml" command="load" />
+    
+    <!-- Loads the controllers -->
+    <node name="controller_spawner_reflex" pkg="controller_manager" type="spawner" respawn="false"
+          output="screen" ns="$(arg robot_name)" args="$(arg controllers) --shutdown-timeout 2" />
+    
+    <!-- Converts joint states to TF transforms for rviz, etc -->
+    <!-- <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen" ns="$(arg robot_name)" >
+    </node> -->
+
+     <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false"  output="screen">
+    </node>
+
+    
+
+   
+          <!-- "$(arg namespace)"> -->
+          <!-- <remap from="joint_states" to="/$(arg namespace)/joint_states" /> -->
+          <!-- <remap from="joint_states" to="/$(arg namespace)/joint_states/BIIIIM" /> -->
+
+ 
+    
+        <!-- <remap from="joint_states" to="/$(arg robot_name)/joint_states" /> -->
+        <!-- <remap from="joint_states" to="/$(arg robot_name)/joint_states" /> -->
+
+    <node name="transmissionProximalDistal" pkg="reflex_control" type="transmissionProximalToDistal_node" respawn="false" output="screen" ns="$(arg namespace)">
+    </node>
+
+    <node name="hand_controller" pkg="reflex_control" type="hand_controller" respawn="false" output="screen" ns="$(arg namespace)">
+    </node>
+    
+</launch>
