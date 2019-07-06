@@ -28,7 +28,7 @@ class GazeboLinkPose:
 
 if __name__ == '__main__':
   try:
-    rospy.init_node('gazebo_link_pose', anonymous=True)
+    rospy.init_node('gazebo_link_pose', anonymous=False)
     # Shortcut the code...
     # gp = GazeboLinkPose(rospy.get_param('~link_name'))
     gp = GazeboLinkPose('cube1::link')

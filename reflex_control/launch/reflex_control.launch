@@ -7,9 +7,9 @@
     <!-- Everythings is spawned under a namespace with the same name as the robot's. -->
     
 <!-- distal_joint_1_position_controller -->
-
+<!-- joint_state_controller  -->
     <arg name="controllers" 
-        default="joint_state_controller 
+        default="
             preshape_1_position_controller 
             preshape_2_position_controller
             proximal_joint_1_position_controller 
@@ -31,13 +31,13 @@
           output="screen" ns="$(arg robot_name)" args="$(arg controllers) --shutdown-timeout 2" />
     
     <!-- Converts joint states to TF transforms for rviz, etc -->
-    <!-- <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
+    <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen" ns="$(arg robot_name)" >
-    </node> -->
-
-     <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
-        respawn="false" output="screen" ns="$(arg namespace)" >
     </node>
+
+     <!-- <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen" ns="$(arg namespace)" >
+    </node> -->
 
     
 
