@@ -39,7 +39,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.06 0.3 0.08"/>
+        <box size="0.14 0.3 0.08"/>
       </geometry>
     </visual>
     <collision>
@@ -56,8 +56,8 @@
         </contact>
         <friction>
           <ode>
-            <mu>0.3</mu>
-            <mu2>0.3</mu2>
+            <mu>0.9</mu>
+            <mu2>0.9</mu2>
             <fdir1>0 0 0</fdir1>
             <slip1>1</slip1>
             <slip2>1</slip2>
@@ -71,7 +71,7 @@
       </surface>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.06 0.3 0.08"/>
+        <box size="0.14 0.3 0.08"/>
       </geometry>
     </collision>
   </link>
