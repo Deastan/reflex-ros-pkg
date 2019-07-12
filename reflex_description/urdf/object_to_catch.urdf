@@ -56,8 +56,8 @@
         </contact>
         <friction>
           <ode>
-            <mu>0.9</mu>
-            <mu2>0.9</mu2>
+            <mu>0.1</mu>
+            <mu2>0.1</mu2>
             <fdir1>0 0 0</fdir1>
             <slip1>1</slip1>
             <slip2>1</slip2>

@@ -47,9 +47,10 @@ void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr /*_sdf*/)
   // Changing std to boost
   // boost::dynamic_pointer_cast<sensors::ContactSensor>(_sensor);
   // std::dynamic_pointer_cast<sensors::ContactSensor>(_sensor);
+  // For gazebo2 => boost and for gazebo7 => std
   // Get the parent sensor
   this->parentSensor = 
-    boost::dynamic_pointer_cast<sensors::ContactSensor>(_sensor);
+    std::dynamic_pointer_cast<sensors::ContactSensor>(_sensor);
 
   // Make sure the parent sensor is valid.
   if (!this->parentSensor)
