@@ -4,22 +4,22 @@
     <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
             respawn="false" output="screen" ns="$(arg robot_name)" >
     </node> -->
-    <remap from="reflex_takktile_2/joint_states" to="iiwa/joint_states"/>
+    <!-- <remap from="reflex_takktile_2/joint_states" to="iiwa/joint_states"/> -->
     <!-- <remap from="/gazebo" to="iiwa/joint_states"/> -->
 
     <!-- <arg name="controllers" default="joint_state_controller pos_joint_trajectory_controller"/>
     <rosparam file="$(find iiwa_control)/config/$(arg robot_name)_control.yaml" command="load" />
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
           output="screen" args="$(arg controllers)" /> -->
-    <arg name="hardware_interface" default="PositionJointInterface" />
+    <!-- <arg name="hardware_interface" default="PositionJointInterface" />
     <arg name="robot_name" default="iiwa" />
     <arg name="model" default="iiwa7"/>
     <arg name="namespace" default="/iiwa"/>
-    <arg name="trajectory" default="true"/>
+    <arg name="trajectory" default="true"/> -->
     <!-- <arg name="gui" default="true"/>
     <arg name="paused" default="false"/> -->
-     <group ns="$(arg namespace)" if="$(arg trajectory)">
-        <!-- <rosparam file="$(find iiwa_gazebo)/config/iiwa_control.yaml" command="load" /> -->
+     <!-- <group ns="$(arg namespace)" if="$(arg trajectory)">
+       
         <include file="$(find iiwa_control)/launch/iiwa_control_respawn.launch">
             <arg name="hardware_interface" value="$(arg hardware_interface)" />
             <arg name="controllers" value=" $(arg hardware_interface)_trajectory_controller" />
@@ -28,29 +28,41 @@
 
         </include>
 
-    </group>
+    </group> -->
 
     <!-- Run a python script to send a service call to gazebo_ros to spawn a URDF robot -->
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" ns="/"
-          args="-urdf -model iiwa -param robot_description"/>
+    <!-- <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" ns="/"
+          args="-urdf -model iiwa -param robot_description"/> -->
     <!-- <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
           args="-urdf -model iiwa -param robot_description"/> -->
     <!-- <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen" ns="$(arg robot_name)" >
     </node> -->
+    <arg name="namespace" default="/reflex_takktile_2" />
+    <!-- <arg name="namespace" default="/iiwa"/> -->
 
+    <!-- Converts joint states to TF transforms for rviz, etc -->
+    <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="true" output="screen" ns="$(arg namespace)" >
+    </node>
+    
+    
+    <node name="transmissionProximalDistal" pkg="reflex_control" type="transmissionProximalToDistal_node" respawn="false" output="screen" ns="$(arg namespace)">
+    </node>
 
+    <node name="hand_controller" pkg="reflex_control" type="hand_controller" respawn="false" output="screen" ns="$(arg namespace)">
+    </node>
 
 
     <!-- REFLEx -->
-    <arg name="robot_name_reflex" default="/reflex_takktile_2"/>
+    <!-- <arg name="robot_name_reflex" default="/reflex_takktile_2"/> -->
     <!-- <arg name="robot_name" default="iiwa"/> -->
     <!-- <arg name="namespace" default="$(arg robot_name)"/> -->
     <!-- <arg name="namespace" default="iiwa"/> -->
-    <arg name="model_reflex" default="takktile_2" />
+    <!-- <arg name="model_reflex" default="takktile_2" /> -->
 
     <!-- Spawn controllers - it uses a JointController -->
-    <include file="$(find reflex_control)/launch/reflex_control_respawn.launch">
+    <!-- <include file="$(find reflex_control)/launch/reflex_control_respawn.launch">
         <arg name="controllers" default=" 
             joint_state_controller
             preshape_1_position_controller 
@@ -64,7 +76,7 @@
         <arg name="robot_name" default="$(arg robot_name_reflex)" />
         <arg name="model" default="$(arg model_reflex)" />
         <arg name="namespace" default="$(arg namespace)"/>
-    </include>
+    </include> -->
     <!-- <arg name="controllers" default=" 
             joint_state_controller
             preshape_1_position_controller 

@@ -27,12 +27,12 @@
     <rosparam file="$(find reflex_control)/config/reflex_control.yaml" command="load" />
     
     <!-- Loads the controllers -->
-    <node name="controller_spawner_reflex" pkg="controller_manager" type="spawner" respawn="false"
+    <node name="controller_spawner_reflex" pkg="controller_manager" type="spawner" respawn="true"
           output="screen" ns="$(arg robot_name)" args="$(arg controllers) --shutdown-timeout 2" />
     
     <!-- Converts joint states to TF transforms for rviz, etc -->
     <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
-        respawn="false" output="screen" ns="$(arg robot_name)" >
+        respawn="true" output="screen" ns="$(arg robot_name)" >
     </node>
 
      <!-- <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
@@ -51,10 +51,10 @@
         <!-- <remap from="joint_states" to="/$(arg robot_name)/joint_states" /> -->
         <!-- <remap from="joint_states" to="/$(arg robot_name)/joint_states" /> -->
 
-    <node name="transmissionProximalDistal" pkg="reflex_control" type="transmissionProximalToDistal_node" respawn="false" output="screen" ns="$(arg namespace)">
+    <node name="transmissionProximalDistal" pkg="reflex_control" type="transmissionProximalToDistal_node" respawn="false" output="screen" ns="$(arg robot_name)">
     </node>
 
-    <node name="hand_controller" pkg="reflex_control" type="hand_controller" respawn="false" output="screen" ns="$(arg namespace)">
+    <node name="hand_controller" pkg="reflex_control" type="hand_controller" respawn="false" output="screen" ns="$(arg robot_name)">
     </node>
     
 </launch>
