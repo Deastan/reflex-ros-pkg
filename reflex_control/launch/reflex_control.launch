@@ -27,12 +27,12 @@
     <rosparam file="$(find reflex_control)/config/reflex_control.yaml" command="load" />
     
     <!-- Loads the controllers -->
-    <node name="controller_spawner_reflex" pkg="controller_manager" type="spawner" respawn="true"
+    <node name="controller_spawner_reflex" pkg="controller_manager" type="spawner" respawn="false"
           output="screen" ns="$(arg robot_name)" args="$(arg controllers) --shutdown-timeout 2" />
     
     <!-- Converts joint states to TF transforms for rviz, etc -->
     <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
-        respawn="true" output="screen" ns="$(arg robot_name)" >
+        respawn="false" output="screen" ns="$(arg robot_name)" >
     </node>
 
      <!-- <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"

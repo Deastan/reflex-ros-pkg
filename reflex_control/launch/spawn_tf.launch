@@ -43,7 +43,7 @@
 
     <!-- Converts joint states to TF transforms for rviz, etc -->
     <node name="robot_state_publisher_reflex" pkg="robot_state_publisher" type="robot_state_publisher"
-        respawn="true" output="screen" ns="$(arg namespace)" >
+        respawn="false" output="screen" ns="$(arg namespace)" >
     </node>
     
     

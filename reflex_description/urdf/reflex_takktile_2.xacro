@@ -832,6 +832,40 @@
     <axis xyz="0 0 0" />
   </joint>
 
+
+  <!-- Create flat square under the robot -->
+  <!-- <box size="0.19 0.19 0.07"/> -->
+  <link name="ground">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0"/>
+      <mass value="100000"/>
+      <inertia ixx="100000" ixy="0.0" ixz="0.0" iyy="100000.0001" iyz="0.0" izz="100000.0001"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="2.0 2. 0.0001"/>
+      </geometry>
+      <!-- <material name="base_color">
+        <xacro:base_color/>
+      </material> -->
+    </visual>
+    <!-- TODO: Change the BASE OF the hand to the version 2 -->
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="2.0 2. 0.0001"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- For a tool on a arm, uncomment this part -->
+  <joint name="ground_link" type="fixed">
+    <parent link="iiwa_link_0" />
+    <child link = "ground" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0.0 3.14159" />
+  </joint>
+
   <!-- ******************************************************************************************************* -->
   <!-- Objects to drop -->
   <!-- ******************************************************************************************************* -->
