@@ -17,8 +17,8 @@
   <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.urdf.xacro"/> -->
 
 <!-- Properties -->
-  <xacro:property name="rectangle_x"     value="0.06"/>
-  <xacro:property name="rectangle_y" value="0.300"/>
+  <xacro:property name="rectangle_x"     value="0.20"/>
+  <xacro:property name="rectangle_y" value="0.20"/>
   <xacro:property name="rectangle_z"   value="0.08"/>
   <xacro:property name="mass"   value="0.80"/>
 
@@ -40,14 +40,6 @@
         ixx="${I_xx}" ixy="0.0" ixz="0.0"
                          iyy="${I_yy}"  iyz="0.0"
                                            izz="${I_zz}"/>
-        <!-- <inertia
-        ixx="0.1" ixy="0.0" ixz="0.0"
-                         iyy="0.1"  iyz="0.0"
-                                           izz="0.1"/> -->
-        <!-- <inertia
-        ixx="${0.083333 * mass * (rectangle_y*rectangle_y + rectangle_z*rectangle_z)}" ixy="0.0" ixz="0.0"
-                         iyy="${0.083333 * mass * (rectangle_x*rectangle_x + rectangle_z*rectangle_z)}"  iyz="0.0"
-                                           izz="{0.083333 * mass * (rectangle_y*rectangle_y + rectangle_x*rectangle_x)}"/> -->
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />

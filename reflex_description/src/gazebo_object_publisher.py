@@ -7,7 +7,7 @@ from gazebo_msgs.msg import LinkStates
 from geometry_msgs.msg import Pose
 
 class GazeboLinkPose:
-  link_name = 'cube1::link'
+  link_name = 'object_to_push::link'
   link_pose = Pose()
   def __init__(self, link_name):
     self.link_name = link_name
@@ -28,10 +28,10 @@ class GazeboLinkPose:
 
 if __name__ == '__main__':
   try:
-    rospy.init_node('gazebo_link_pose', anonymous=False)
+    rospy.init_node('Gazebo_object_pose', anonymous=False)
     # Shortcut the code...
     # gp = GazeboLinkPose(rospy.get_param('~link_name'))
-    gp = GazeboLinkPose('cube1::link')
+    gp = GazeboLinkPose('object_to_push::link')
     publish_rate = 30#rospy.get_param('~publish_rate', 10)
 
     rate = rospy.Rate(publish_rate)

@@ -39,7 +39,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.14 0.3 0.08"/>
+        <box size="0.20 0.20 0.08"/>
       </geometry>
     </visual>
     <collision>
@@ -71,7 +71,7 @@
       </surface>
       <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.14 0.3 0.08"/>
+        <box size="0.20 0.20 0.08"/>
       </geometry>
     </collision>
   </link>

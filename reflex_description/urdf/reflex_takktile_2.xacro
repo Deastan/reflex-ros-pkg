@@ -18,31 +18,31 @@
   <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.urdf.xacro"/>
 
   <!-- Properties -->
-  <xacro:property name="flex_link_mass" value="0.0001"/>
-  <xacro:property name="proximal_link_mass" value="0.0001"/>
-  <xacro:property name="distal_link_mass" value="0.0001"/>
-  <xacro:property name="proximal_pad_mass" value="0.0001"/>
-  <xacro:property name="distal_pad_mass" value="0.0001"/>
-  <xacro:property name="swivel_link_mass" value="0.0001"/>
-  <xacro:property name="base_link_mass" value="0.0074"/><!-- 0.74 -->
+  <xacro:property name="flex_link_mass" value="0.01"/>
+  <xacro:property name="proximal_link_mass" value="0.01"/>
+  <xacro:property name="distal_link_mass" value="0.01"/>
+  <xacro:property name="proximal_pad_mass" value="0.01"/>
+  <xacro:property name="distal_pad_mass" value="0.01"/>
+  <xacro:property name="swivel_link_mass" value="0.01"/>
+  <xacro:property name="base_link_mass" value="0.74"/><!-- 0.74 -->
   <xacro:property name="pad_mass" value="0.001"/>
 
   <!-- Parameters Limits Joints -->
   <!-- Preshape -->
-  <xacro:property name="preshape_joint_limit_effort" value="0.50"/>
-  <xacro:property name="preshape_joint_limit_velocity" value="0.5"/>
+  <xacro:property name="preshape_joint_limit_effort" value="10.0"/> <!-- 0.50 -->
+  <xacro:property name="preshape_joint_limit_velocity" value="1.0"/>
   <xacro:property name="preshape_joint_limit_lower" value="-0.00"/>
   <xacro:property name="preshape_joint_limit_upper" value="1.65"/>
 
   <!-- Proximal -->
-  <xacro:property name="proximal_joint_limit_effort" value="0.50"/>
-  <xacro:property name="proximal_joint_limit_velocity" value="0.5"/>
+  <xacro:property name="proximal_joint_limit_effort" value="10.0"/><!-- 0.50 -->
+  <xacro:property name="proximal_joint_limit_velocity" value="1.0"/>
   <xacro:property name="proximal_joint_limit_lower" value="0.0"/>
   <xacro:property name="proximal_joint_limit_upper" value="2.09440"/>
 
   <!-- Distal -->
-  <xacro:property name="distal_joint_limit_effort" value="0.50"/>
-  <xacro:property name="distal_joint_limit_velocity" value="0.5"/>
+  <xacro:property name="distal_joint_limit_effort" value="10.0"/><!-- 0.50 -->
+  <xacro:property name="distal_joint_limit_velocity" value="1.0"/>
   <xacro:property name="distal_joint_limit_lower" value="0.0"/>
   <xacro:property name="distal_joint_limit_upper" value="1.7"/>
 

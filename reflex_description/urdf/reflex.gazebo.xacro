@@ -121,52 +121,6 @@
 			<!-- <maxContacts>1</maxContacts> -->
   </gazebo>
 
-
-  <!-- Add gazebo - pkg for grasping -->
-  <!-- <gazebo>
-   <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
-        <arm>
-           <arm_name>base_link</arm_name>
-           <palm_link>pad</palm_link>
-           <gripper_link>distal_pad_1</gripper_link>
-           <gripper_link>distal_pad_2</gripper_link>
-           <gripper_link>distal_pad_3</gripper_link>
-           <gripper_link>proximal_pad_1</gripper_link>
-           <gripper_link>proximal_pad_2</gripper_link>
-           <gripper_link>proximal_pad_3</gripper_link>
-        </arm>
-       <forces_angle_tolerance>100</forces_angle_tolerance>
-       <update_rate>4</update_rate>
-       <grip_count_threshold>4</grip_count_threshold>
-       <max_grip_count>8</max_grip_count>
-       <release_tolerance>0.005</release_tolerance>
-       <disable_collisions_on_attach>false</disable_collisions_on_attach>
-       <contact_topic>__default_topic__</contact_topic>
-    </plugin>
-  </gazebo> -->
-
-  <!-- <gazebo>
-   <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
-        <arm>
-           <arm_name>base_link</arm_name>
-           <palm_link>pad</palm_link>
-           <gripper_link>iiwa/distal_pad_1</gripper_link>
-           <gripper_link>iiwa/distal_pad_2</gripper_link>
-           <gripper_link>iiwa/distal_pad_3</gripper_link>
-           <gripper_link>iiwa/proximal_pad_1</gripper_link>
-           <gripper_link>iiwa/proximal_pad_2</gripper_link>
-           <gripper_link>iiwa/proximal_pad_3</gripper_link>
-        </arm>
-       <forces_angle_tolerance>100</forces_angle_tolerance>
-       <update_rate>10</update_rate>
-       <grip_count_threshold>2</grip_count_threshold>
-       <max_grip_count>10</max_grip_count>
-       <release_tolerance>0.005</release_tolerance>
-       <disable_collisions_on_attach>true</disable_collisions_on_attach>
-       <contact_topic>__default_topic__</contact_topic>
-    </plugin>
-  </gazebo> -->
-
   <gazebo>
    <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
         <arm>
@@ -216,52 +170,4 @@
     </plugin>
   </gazebo>
 
-  <!-- <gazebo>
-   <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
-        <arm>
-          <arm_name>base_link</arm_name>
-          <palm_link>iiwa/pad</palm_link>
-          <gripper_link>iiwa/distal_1</gripper_link>
-          <gripper_link>iiwa/distal_2</gripper_link>
-          <gripper_link>iiwa/distal_3</gripper_link>
-          <gripper_link>iiwa/proximal_1</gripper_link>
-          <gripper_link>iiwa/proximal_2</gripper_link>
-          <gripper_link>iiwa/proximal_3</gripper_link>
-          <gripper_link>iiwa/proximal_1_sensor_1</gripper_link>
-          <gripper_link>iiwa/proximal_1_sensor_2</gripper_link>
-          <gripper_link>iiwa/proximal_1_sensor_3</gripper_link>
-          <gripper_link>iiwa/proximal_1_sensor_4</gripper_link>
-          <gripper_link>iiwa/proximal_1_sensor_5</gripper_link>
-          <gripper_link>iiwa/proximal_2_sensor_1</gripper_link>
-          <gripper_link>iiwa/proximal_2_sensor_2</gripper_link>
-          <gripper_link>iiwa/proximal_2_sensor_3</gripper_link>
-          <gripper_link>iiwa/proximal_2_sensor_4</gripper_link>
-          <gripper_link>iiwa/proximal_2_sensor_5</gripper_link>
-          <gripper_link>iiwa/proximal_3_sensor_1</gripper_link>
-          <gripper_link>iiwa/proximal_3_sensor_2</gripper_link>
-          <gripper_link>iiwa/proximal_3_sensor_3</gripper_link>
-          <gripper_link>iiwa/proximal_3_sensor_4</gripper_link>
-          <gripper_link>iiwa/proximal_3_sensor_5</gripper_link>
-          <gripper_link>iiwa/distal_1_sensor_1</gripper_link>
-          <gripper_link>iiwa/distal_1_sensor_2</gripper_link>
-          <gripper_link>iiwa/distal_1_sensor_3</gripper_link>
-          <gripper_link>iiwa/distal_1_sensor_4</gripper_link>
-          <gripper_link>iiwa/distal_2_sensor_1</gripper_link>
-          <gripper_link>iiwa/distal_2_sensor_2</gripper_link>
-          <gripper_link>iiwa/distal_2_sensor_3</gripper_link>
-          <gripper_link>iiwa/distal_2_sensor_4</gripper_link> 
-          <gripper_link>iiwa/distal_3_sensor_1</gripper_link>
-          <gripper_link>iiwa/distal_3_sensor_2</gripper_link>
-          <gripper_link>iiwa/distal_3_sensor_3</gripper_link>
-          <gripper_link>iiwa/distal_3_sensor_4</gripper_link>           
-        </arm>
-      <forces_angle_tolerance>180</forces_angle_tolerance>
-      <update_rate>100</update_rate>
-      <grip_count_threshold>2</grip_count_threshold>
-      <max_grip_count>10</max_grip_count>
-      <release_tolerance>0.05</release_tolerance>
-      <disable_collisions_on_attach>true</disable_collisions_on_attach>
-      <contact_topic>__default_topic__</contact_topic>
-    </plugin>
-  </gazebo> -->
 </robot>

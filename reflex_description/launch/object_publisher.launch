@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="robot_name" default="reflex_takktile_2"/>
+    <arg name="namespace" default="/reflex_takktile_2"/>
+
+    <node pkg="reflex_description" name="gazebo_object_publisher" type="gazebo_object_publisher.py" output="screen" ns="$(arg namespace)"/>
+    
+</launch>
