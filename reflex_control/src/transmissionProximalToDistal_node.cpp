@@ -1,5 +1,5 @@
 /*
- * Jonathan Burkhard, SMS-Lab, ETH Zurich, Switzerland
+ * 
  * Jonathan Burkhard, CSEM S.A., Alpnach Dorf, Switzerland
  *
  * Node Transmission link the proximal joint with the distal

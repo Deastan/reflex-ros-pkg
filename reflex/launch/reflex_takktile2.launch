@@ -2,7 +2,7 @@
   <rosparam command="load" file="$(find reflex)/yaml/tf_geometry.yaml"/>
   <rosparam command="load" file="$(find reflex)/yaml/reflex_takktile2.yaml"/>
 
-  <arg name="eth" default="eth0"/>
+  <arg name="eth" default="eth1"/>
   <include file="$(find reflex_driver2)/launch/reflex_takktile2_driver.launch">
   	<arg name="eth" value="$(arg eth)"/>
   </include>

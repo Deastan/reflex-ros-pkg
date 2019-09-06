@@ -20,7 +20,7 @@
   <xacro:property name="rectangle_x"     value="0.20"/>
   <xacro:property name="rectangle_y" value="0.20"/>
   <xacro:property name="rectangle_z"   value="0.08"/>
-  <xacro:property name="mass"   value="0.80"/>
+  <xacro:property name="mass"   value="0.30"/>
 
   <!-- ${flex_length/2.0} -->
 
@@ -61,8 +61,8 @@
         </contact>
         <friction>
           <ode>
-            <mu>0.3</mu>
-            <mu2>0.3</mu2>
+            <mu>0.1</mu>
+            <mu2>0.1</mu2>
             <fdir1>0 0 0</fdir1>
             <slip1>1</slip1>
             <slip2>1</slip2>

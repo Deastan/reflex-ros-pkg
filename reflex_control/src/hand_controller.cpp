@@ -1,8 +1,8 @@
 /*
- * Jonathan Burkhard, SMS-Lab, ETH Zurich, Switzerland
+ * 
  * Jonathan Burkhard, CSEM S.A., Alpnach Dorf, Switzerland
  *
- * Node Transmission link the proximal joint with the distal
+ * Node close the hand or open it on the topic: /reflex_takktile_2/close_hand
  */
 
 //Include
